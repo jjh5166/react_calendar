@@ -1,18 +1,18 @@
 import React from 'react';
 
 export const SelectList = (props) => {
-  let popup = props.data.map((data) => {
+  let monthList = props.data.map((data) => {
     return (
       <div key={data}>
-        <a href="#" onClick={(e) => { this.onSelectChange(e, data) }}>
+        <div onClick={(e) => { props.clickHandler(e, data) }}>
           {data}
-        </a>
+        </ div>
       </div>
     );
   });
   return (
     <div className="month-popup">
-      {popup}
+      {monthList}
     </div>
   )
 }
