@@ -1,22 +1,20 @@
-import React from 'react';
-import {SelectList} from "./SelectList.js"
-import moment from "moment";
-
-const months = moment.months();
+import React, { useState } from 'react';
+import { SelectList } from './SelectList.js'
+import { withMomenter } from '../Momenter';
 
 function MonthNav(props) {
-  let month = () => {
-    return props.dateContext.format("MMMM");
-  }
-    return (
-      <span className="label-month"
-        onClick={ props.clickHandler }>
-        {month()}
-        {props.showMonthPopup &&
-          <SelectList data={months} />
-        }
-      </span>
-    );
-  }
+  const [showMonthPopup, monthToggle] = useState(false)
+  const months = props.momenter.months;
+  return (
+    <span className="label-month"
+      onClick={() => monthToggle(!showMonthPopup)}>
 
-export default MonthNav;
+      {props.momenter.month()}
+      {showMonthPopup &&
+        <SelectList data={months} clickHandler={props.momenter.onSelectChange} />
+      }
+    </span>
+  );
+}
+
+export default withMomenter(MonthNav);
