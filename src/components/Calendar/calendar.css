@@ -79,10 +79,8 @@ tr {
 }
 
 .nav-month {
-    position: absolute;
     top: 0.6em;
     font-size: 0.6em;
-    right:3px;
 }
 
 /* .prev {
