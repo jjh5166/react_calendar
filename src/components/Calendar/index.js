@@ -14,8 +14,7 @@ export default class Calendar extends React.Component {
     this.style.width = this.width;
   }
   state = {
-    dateContext: moment(),
-    today: moment()
+    dateContext: moment()
   }
 
   updateDateContext = (newDateContext) => {
