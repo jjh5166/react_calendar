@@ -6,6 +6,7 @@ class Momenter {
     this.updateDateContext = updater;
     this.months = moment.months();
     this.weekdaysShort = moment.weekdaysShort();
+    this.today = moment()
   }
   year = () => {
     return this.dateContext.format("Y");
