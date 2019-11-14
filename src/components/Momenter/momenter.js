@@ -53,5 +53,10 @@ class Momenter {
     this.setMonth(data);
     // this.props.onMonthChange && this.props.onMonthChange();
   }
+  setYear = (year) => {
+    let dateContext = { ...this.dateContext }
+    dateContext = moment(dateContext).set("year", year);
+    this.updateDateContext(dateContext);
+  }
 }
 export default Momenter;
