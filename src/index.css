@@ -2,7 +2,10 @@ html{
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
 }
-
+body, #root {
+	height: 100%;
+	width: 100%;
+}
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
