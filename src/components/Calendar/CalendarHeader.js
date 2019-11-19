@@ -1,22 +1,30 @@
 import React from "react";
+import styled from 'styled-components';
 import MonthNav from '../MonthNav'
 import CalendarArrow from './CalendarArrow'
 import YearNav from "../YearNav";
 
 function CalendarHeader() {
   return (
-    <thead>
-      <tr className="calendar-header">
-        <CalendarArrow state="left" />
-        <td colSpan="5">
-          < MonthNav />
-          {" "}
-          < YearNav />
-        </td>
-          <CalendarArrow state="right" />
-      </tr>
-    </thead>
+    <HeaderContainer>
+      <CalendarArrow state="left" />
+      <MonthYearContainer>
+        < MonthNav />
+        {" "}
+        < YearNav />
+      </MonthYearContainer>
+      
+      <CalendarArrow state="right" />
+    </HeaderContainer>
   )
 }
+
+const HeaderContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed skyblue;
+  font-size: 3.6em;
+  `
+const MonthYearContainer = styled.span``
 
 export default CalendarHeader;

@@ -1,23 +1,19 @@
 import React, { Component } from 'react';
-import './App.css';
+import styled from 'styled-components';
 import Calendar from '../Calendar'
 
-const style = {
-  position: "relative",
-  margin: "50px auto"
-}
 class App extends Component {
-  onDayClick = (e, day) => {
-    alert(day);
-  }
   render() {
     return (
-      <div className="App">
-        <Calendar style={style} width="302px"
-        onClick={(e, day)=> this.onDayClick(e,day)} />
-      </div>
+      <AppDiv>
+        <Calendar />
+      </AppDiv>
     )
     }
 }
 
+const AppDiv = styled.div`
+  height:100%;
+  width:100%;
+  `
 export default App;
