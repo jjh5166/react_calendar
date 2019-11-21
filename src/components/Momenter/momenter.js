@@ -6,6 +6,7 @@ class Momenter {
     this.updateDateContext = updater;
     this.months = moment.months();
     this.weekdaysShort = moment.weekdaysShort();
+    this.weekdays = moment.weekdays();
     this.today = moment()
   }
   year = () => {
@@ -40,9 +41,14 @@ class Momenter {
     this.updateDateContext(dateContext);
   }
   firstDayOfMonth = () => {
-    let dateContext = this.date;
+    let dateContext = this.dateContext;
     let firstDay = moment(dateContext).startOf('month').format('d');
     return firstDay
+  }
+  lastDayOfMonth = () => {
+    let dateContext = this.dateContext;
+    let lastDay = moment(dateContext).endOf('month').format('d');
+    return lastDay
   }
   daysInMonth = () => {
     return this.dateContext.daysInMonth();
