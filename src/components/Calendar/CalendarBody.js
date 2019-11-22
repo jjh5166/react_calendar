@@ -27,12 +27,15 @@ function CalendarBody(props) {
   let currentDate = props.momenter.dateContext.date();
   for (let d = 1; d <= props.momenter.daysInMonth(); d++) {
     daysInMonth.push(
-      <DaySlot key={'Day' + d} selected={(d === currentDate)}>
-        <DaySpan onClick={(e) => { this.onDayClick(e, d) }}>{d}</DaySpan>
+      <DaySlot 
+        key={'Day' + d} selected={(d === currentDate)}
+        onClick={(e) => { props.momenter.onSelectDay(e, d) }}
+      >
+        <DaySpan>{d}</DaySpan>
       </DaySlot>
     )
   }
-  
+
   var totalSlots = [...startBlanks, ...daysInMonth, ...endBlanks]
   let rows = [];
   let cells = [];

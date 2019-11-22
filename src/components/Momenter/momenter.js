@@ -30,6 +30,11 @@ class Momenter {
     dateContext = moment(dateContext).set("month", monthNo);
     this.updateDateContext(dateContext);
   }
+  setDate = (date) => {
+    let dateContext = { ...this.dateContext };
+    dateContext = moment(dateContext).date(date);
+    this.updateDateContext(dateContext);
+  }
   nextMonth = () => {
     let dateContext = {...this.dateContext}
     dateContext = moment(dateContext).add(1, "month");
@@ -56,6 +61,9 @@ class Momenter {
   onSelectChange = (e, data) => {
     this.setMonth(data);
     // this.props.onMonthChange && this.props.onMonthChange();
+  }
+  onSelectDay = (e, data) => {
+    this.setDate(data)
   }
   setYear = (year) => {
     let dateContext = { ...this.dateContext }
