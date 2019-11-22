@@ -53,9 +53,6 @@ class Momenter {
   daysInMonth = () => {
     return this.dateContext.daysInMonth();
   }
-  currentDate = () => {
-    return this.dateContext.get("date");
-  }
   onSelectChange = (e, data) => {
     this.setMonth(data);
     // this.props.onMonthChange && this.props.onMonthChange();
