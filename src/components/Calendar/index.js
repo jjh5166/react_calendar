@@ -34,5 +34,4 @@ export default class Calendar extends React.Component {
 
 const CalendarContainer = styled.div`
   height:100%;
-  width: 100%;
-  border: 2px solid skyblue;`
+  width: 100%;`

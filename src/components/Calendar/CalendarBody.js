@@ -13,22 +13,25 @@ function CalendarBody(props) {
   let startBlanks = [];
   let endBlanks = [];
   for (let i = 0; i < props.momenter.firstDayOfMonth(); i++) {
-    startBlanks.push(<DaySlot key={"Blank"+i} className="emptySlot">
+    startBlanks.push(<DaySlot key={"startBlank"+i} className="emptySlot">
       {""}
     </DaySlot>)
   }
   for (let i = props.momenter.lastDayOfMonth(); i < 6; i++) {
-    endBlanks.push(<DaySlot key={"Blank"+i} className="emptySlot">
+    endBlanks.push(<DaySlot key={"endBlank"+i} className="emptySlot">
       {""}
     </DaySlot>)
   }
 
   let daysInMonth = [];
+  let currentDate = props.momenter.dateContext.date();
   for (let d = 1; d <= props.momenter.daysInMonth(); d++) {
-    let className = (d === props.momenter.currentDate() ? "day current-day" : "day");
     daysInMonth.push(
-      <DaySlot key={d * 100} className={className}>
-        <DaySpan onClick={(e) => { this.onDayClick(e, d) }}>{d}</DaySpan>
+      <DaySlot 
+        key={'Day' + d} selected={(d === currentDate)}
+        onClick={(e) => { props.momenter.onSelectDay(e, d) }}
+      >
+        <DaySpan>{d}</DaySpan>
       </DaySlot>
     )
   }
@@ -54,7 +57,7 @@ function CalendarBody(props) {
 
   let calendarDates = rows.map((d, i) => {
     return (
-      <DatesRow key={i * 10000}>
+      <DatesRow key={'Row'+i}>
         {d}
       </DatesRow>
     )
@@ -96,6 +99,7 @@ const WeekdaySlot = styled(CalSlot)`
   text-align: center;
 `
 const DaySlot = styled(CalSlot)`
+  background-color: ${props => props.selected ? "grey" : "white"};
 `
 const DaySpan = styled.span`
 margin-left: 5%;
