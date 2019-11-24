@@ -1,19 +1,15 @@
-import React, { useState } from 'react';
-import { SelectList } from './SelectList.js'
+import React from 'react';
 import { withMomenter } from '../Momenter';
+import Dropdown from "../Dropdown";
 
 function MonthNav(props) {
-  const [showMonthPopup, monthToggle] = useState(false)
   const months = props.momenter.months;
   return (
-    <span className="label-month"
-      onClick={() => monthToggle(!showMonthPopup)}>
-
-      {props.momenter.month()}
-      {showMonthPopup &&
-        <SelectList data={months} clickHandler={props.momenter.onSelectChange} />
-      }
-    </span>
+    <Dropdown
+      value={props.momenter.month()}
+      onChange={props.momenter.setMonth}
+      options={months}
+    />
   );
 }
 

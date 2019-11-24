@@ -25,6 +25,10 @@ const HeaderContainer = styled.div`
   border-bottom: 1px dashed skyblue;
   font-size: 3.6em;
   `
-const MonthYearContainer = styled.span``
+const MonthYearContainer = styled.div`
+  display: inline-flex;
+  justify-content: space-between;
+  width: 27%;
+  `
 
 export default CalendarHeader;
