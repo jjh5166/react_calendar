@@ -85,9 +85,12 @@ const WeekdayHeader = styled(CalRow)`
   outline: solid green 2px;
 `
 const DatesRow = styled(CalRow)`
-  height: 90px;
+  height: 60px;
   margin-bottom: 1px;
   grid-gap: 1px;
+  @media only screen and (min-width: 824px) and (orientation: landscape){
+    height: 90px;
+  }
 `
 const CalSlot = styled.div`
   height: 100%;
