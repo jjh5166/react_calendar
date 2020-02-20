@@ -31,8 +31,8 @@ const Dropdown = ({ value, options, placeholder = "Select", onChange }) => {
   }, [open]);
 
   return (
-    <div ref={node} className="dropdown">
-      <span className="dropdown-toggler" onClick={e => setOpen(!open)}>
+    <div ref={node}>
+      <span onClick={e => setOpen(!open)}>
         {value || placeholder}
       </span>
       {open && (
