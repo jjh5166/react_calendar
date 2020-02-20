@@ -8250,6 +8250,11 @@ react-dev-utils@^9.1.0:
     strip-ansi "5.2.0"
     text-table "0.2.0"
 
+react-div-100vh@^0.3.8:
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/react-div-100vh/-/react-div-100vh-0.3.8.tgz#54e4c32d0286a65e92367fc0a07cc3f2f00739d8"
+  integrity sha512-1kDFW+HXYpfac1tfJ4BcQmgTSeTtLVs2FO2ZNHcwLIga+oVluexUEISCBJvr9xq98DK8tcygY3259EvIy5O+3g==
+
 react-dom@^16.11.0:
   version "16.11.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.11.0.tgz#7e7c4a5a85a569d565c2462f5d345da2dd849af5"
@@ -8903,6 +8908,11 @@ serialize-javascript@^1.7.0:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/serialize-javascript/-/serialize-javascript-1.9.1.tgz#cfc200aef77b600c47da9bb8149c943e798c2fdb"
   integrity sha512-0Vb/54WJ6k5v8sSWN09S0ora+Hnr+cX40r9F170nT+mSkaxltoE/7R3OrIdBSUv1OoiobH1QoWQbCnAO+e8J1A==
+
+serialize-javascript@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/serialize-javascript/-/serialize-javascript-3.0.0.tgz#492e489a2d77b7b804ad391a5f5d97870952548e"
+  integrity sha512-skZcHYw2vEX4bw90nAr2iTTsz6x2SrHEnfxgKYmZlvJYBEZrvbKtobJWlQ20zczKb3bsHHXXTYt48zBA7ni9cw==
 
 serve-index@^1.7.2:
   version "1.9.1"

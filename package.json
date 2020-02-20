@@ -5,9 +5,11 @@
   "dependencies": {
     "moment": "^2.24.0",
     "react": "^16.11.0",
+    "react-div-100vh": "^0.3.8",
     "react-dom": "^16.11.0",
     "react-scripts": "3.2.0",
     "react-select": "^3.0.8",
+    "serialize-javascript": "^3.0.0",
     "styled-components": "^4.4.1"
   },
   "scripts": {
