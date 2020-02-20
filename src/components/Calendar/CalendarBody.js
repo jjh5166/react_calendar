@@ -106,6 +106,7 @@ const DaySlot = styled(CalSlot)`
 `
 const DaySpan = styled.span`
 margin-left: 5%;
+font-family: 'Raleway', sans-serif;
 `
 const DayName = styled.span`
   height: 100%;
