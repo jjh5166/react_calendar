@@ -102,6 +102,7 @@ const WeekdaySlot = styled(CalSlot)`
   text-align: center;
 `
 const DaySlot = styled(CalSlot)`
+  cursor: pointer;
   background-color: ${props => props.selected ? "grey" : "white"};
 `
 const DaySpan = styled.span`
