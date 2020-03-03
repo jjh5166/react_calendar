@@ -31,7 +31,7 @@ const Dropdown = ({ value, options, placeholder = "Select", onChange }) => {
   }, [open]);
 
   return (
-    <div ref={node}>
+    <DropdownContainer ref={node}>
       <span onClick={e => setOpen(!open)}>
         {value || placeholder}
       </span>
@@ -44,9 +44,16 @@ const Dropdown = ({ value, options, placeholder = "Select", onChange }) => {
           ))}
         </DropdownMenu>
       )}
-    </div>
+    </DropdownContainer>
   );
 };
+const DropdownContainer = styled.div`
+  cursor: pointer;
+  width: fit-content;
+  span{
+    line-height: 100%;
+  }
+`
 const DropdownMenu = styled.ul`
   position: absolute;
   background: white;
@@ -56,6 +63,7 @@ const DropdownMenu = styled.ul`
   height: 300px;
 `
 const DropdownItem = styled.li`
+  cursor: pointer;
   list-style-type: none;
   &:hover {
     background-color: lightblue;
