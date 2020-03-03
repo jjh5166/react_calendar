@@ -23,6 +23,7 @@ function CalendarArrow(props) {
   }
 }
 const MonthArrow = styled.div`
+  cursor: pointer;
   ${props => (props.state === 'left' ? `margin-left: 1%` : `margin-right: 1%`)};
 `
 export default withMomenter(CalendarArrow);

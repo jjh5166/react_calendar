@@ -9,11 +9,12 @@ function CalendarHeader() {
     <HeaderContainer>
       <CalendarArrow state="left" />
       <MonthYearContainer>
-        < MonthNav />
-        {" "}
-        < YearNav />
+        <FlexCenter>
+          <MonthNav />
+          <FlexSpacer/>
+          <YearNav />
+        </FlexCenter>
       </MonthYearContainer>
-      
       <CalendarArrow state="right" />
     </HeaderContainer>
   )
@@ -22,13 +23,31 @@ function CalendarHeader() {
 const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px dashed skyblue;
   font-size: 3.6em;
+  height: 60px;
   `
 const MonthYearContainer = styled.div`
   display: inline-flex;
   justify-content: space-between;
   width: 27%;
+  flex-grow: 1;
+  justify-content: center;
   `
+const FlexCenter = styled.div`
+  width:90%;
+  display: inline-flex;
+  justify-content: space-between;
+  @media only screen and (min-width: 580px) and (orientation: landscape){
+    justify-content: space-around;
+  }
+  @media only screen and (min-width: 824px) and (orientation: landscape){
+    justify-content: center;
+  }
+`
+const FlexSpacer = styled.div`
+  @media only screen and (min-width: 824px) and (orientation: landscape){
+    width: 35px;
+  }
+`
 
 export default CalendarHeader;
