@@ -1,9 +1,51 @@
 import React from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import { withMomenter } from '../Momenter';
 
-function CalendarBody(props) {
-  let weekdays = props.momenter.weekdays.map((dayName) => {
+const WEATHER_API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
+const PATH_BASE = 'https://api.openweathermap.org/data/2.5/forecast';
+const DEFAULT_COORDS = {
+  lat: 51.5073,
+  lon: -0.1277
+}
+const TEMP_TYPE = 'imperial'
+
+class CalendarBody extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      weather: null,
+      coords: DEFAULT_COORDS,
+      city: null,
+      error: null
+    };
+  }
+  setWeather(list) {
+    let fiveDayForecast = []
+    for (let i = 0; i < list.length; i++) {
+      if (i === 0) {
+        fiveDayForecast.push(list[i])
+      }
+
+    }
+    this.setState({ weather: fiveDayForecast })
+  }
+  handleWeatherResult(result) {
+    this.setState({ city: result['data']['city'] });
+    this.setWeather(result['data']['list']);
+  }
+  componentDidMount() {
+    const { coords } = this.state;
+    axios.get(`${PATH_BASE}?lat=${coords.lat}&lon=${coords.lon}&units=${TEMP_TYPE}&appid=${WEATHER_API_KEY}`)
+      .then(result => { this.handleWeatherResult(result) })
+      .catch((error) => { this.setState({ error }) })
+  }
+  render() {
+    const {
+      momenter
+    } = this.props;
+  let weekdays = momenter.weekdays.map((dayName) => {
     return (
         <WeekdaySlot key={dayName}>
         <DayName>{dayName}</DayName>
@@ -12,26 +54,27 @@ function CalendarBody(props) {
   })
   let startBlanks = [];
   let endBlanks = [];
-  for (let i = 0; i < props.momenter.firstDayOfMonth(); i++) {
+  for (let i = 0; i < momenter.firstDayOfMonth(); i++) {
     startBlanks.push(<DaySlot key={"startBlank"+i} className="emptySlot">
       {""}
     </DaySlot>)
   }
-  for (let i = props.momenter.lastDayOfMonth(); i < 6; i++) {
+  for (let i = momenter.lastDayOfMonth(); i < 6; i++) {
     endBlanks.push(<DaySlot key={"endBlank"+i} className="emptySlot">
       {""}
     </DaySlot>)
   }
 
   let daysInMonth = [];
-  let currentDate = props.momenter.dateContext.date();
-  for (let d = 1; d <= props.momenter.daysInMonth(); d++) {
+  let currentDate = momenter.dateContext.date();
+  for (let d = 1; d <= momenter.daysInMonth(); d++) {
     daysInMonth.push(
       <DaySlot 
         key={'Day' + d} selected={(d === currentDate)}
-        onClick={(e) => { props.momenter.onSelectDay(e, d) }}
+        onClick={(e) => { momenter.onSelectDay(e, d) }}
       >
         <DaySpan>{d}</DaySpan>
+        {(0 <= (d - currentDate) && (d - currentDate) <= 4) && <WeatherReport/> }
       </DaySlot>
     )
   }
@@ -62,13 +105,13 @@ function CalendarBody(props) {
       </DatesRow>
     )
   })
-
-  return (
-    <CalContainer>
-    <WeekdayHeader>{weekdays}</WeekdayHeader>
-    {calendarDates}
-    </CalContainer>
-  );
+    return (
+      <CalContainer>
+      <WeekdayHeader>{weekdays}</WeekdayHeader>
+      {calendarDates}
+      </CalContainer>
+    );
+  }
 }
 
 const CalContainer = styled.div`
@@ -113,5 +156,10 @@ const DayName = styled.span`
   height: 100%;
   display: inline-flex;
   align-items: center;
+`
+const WeatherReport = styled.div`
+  width: 20px;
+  height: 20px;
+  background-color: seagreen;
 `
 export default withMomenter(CalendarBody);
