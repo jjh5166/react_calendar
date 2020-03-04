@@ -9,21 +9,16 @@ class Momenter {
     this.weekdays = moment.weekdays();
     this.today = moment()
   }
-  year = () => {
-    return this.dateContext.format("Y");
-  }
-  month = () => {
-    return this.dateContext.format("MMMM");
-  }
-  months = () => {
-    return moment.months()
-  }
-  daysInMonth = () => {
-    return this.dateContext.daysInMonth();
-  }
-  currentDate = () => {
-    return this.dateContext.get("date");
-  }
+  year = () => this.dateContext.format("Y");
+
+  month = () => this.dateContext.format("MMMM");
+
+  daysInMonth = () => this.dateContext.daysInMonth();
+  
+  currentDate = () => this.dateContext.date();
+
+  todayDate = () => this.today.date();
+  
   setMonth = (month) => {
     let monthNo = this.months.indexOf(month);
     let dateContext = {...this.dateContext}
@@ -55,12 +50,8 @@ class Momenter {
     let lastDay = moment(dateContext).endOf('month').format('d');
     return lastDay
   }
-  daysInMonth = () => {
-    return this.dateContext.daysInMonth();
-  }
   onSelectChange = (e, data) => {
     this.setMonth(data);
-    // this.props.onMonthChange && this.props.onMonthChange();
   }
   onSelectDay = (e, data) => {
     this.setDate(data)
