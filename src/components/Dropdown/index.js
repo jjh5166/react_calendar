@@ -50,6 +50,7 @@ const Dropdown = ({ value, options, placeholder = "Select", onChange }) => {
 const DropdownContainer = styled.div`
   cursor: pointer;
   width: fit-content;
+  z-index: 5;
   span{
     line-height: 100%;
   }
