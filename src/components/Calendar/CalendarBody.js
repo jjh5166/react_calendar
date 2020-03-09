@@ -4,7 +4,7 @@ import { withMomenter } from '../Momenter';
 
 import {
   CalContainer, WeekdayHeader, DatesRow, WeekdaySlot,
-  DaySlot, DaySpan, DayName, WeatherContainer,
+  DaySlot, DaySpan, DayName, WeatherContainer, ShowTemp
 } from './styled';
 
 const WEATHER_API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
@@ -123,7 +123,7 @@ const WeatherReport = ({ daysWeather }) => {
   return (
     <WeatherContainer>
       <img src={`http://openweathermap.org/img/w/${iconType}.png`} alt='Weather Icon' />
-      <div>{daysWeather.main.temp}</div>
+      <ShowTemp>{Math.round(daysWeather.main.temp)}°</ShowTemp>
     </WeatherContainer>
   )
 }
