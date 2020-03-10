@@ -28,8 +28,24 @@ class CalendarBody extends React.Component {
   handleWeatherResult(result) {
     this.setState({
       city: result['data']['city'],
-      weather: result['data']['list']
+      weather: this.parseWeather(result['data']['list'])
     });
+  }
+  parseWeather(list) {
+    const dateEx = /\d{1,2}(?=[ ])/
+    const noonEx = /12:/
+    let parsedWeather = [list[0]]
+    let gotWeather = []
+    for(let i=0; i < list.length; i++){
+      let time = list[i]["dt_txt"];
+      if(i===0){
+        gotWeather.push(time.match(dateEx)[0])
+      }
+      if (noonEx.test(time) && !gotWeather.includes(time.match(dateEx)[0])){
+        parsedWeather.push(list[i])
+      }
+    }
+    return parsedWeather
   }
   componentDidMount() {
     const { coords } = this.state;
@@ -37,8 +53,9 @@ class CalendarBody extends React.Component {
       .then(result => { this.handleWeatherResult(result) })
       .catch((error) => { this.setState({ error }) })
   }
+
   render() {
-    const {
+    let {
       momenter
     } = this.props;
     let weekdays = momenter.weekdays.map((dayName) => {
@@ -64,9 +81,9 @@ class CalendarBody extends React.Component {
     let daysInMonth = [];
     let currentDate = momenter.currentDate();
     let todayDate = momenter.todayDate();
-    const { weather } = this.state;
-    console.log(weather)
+    let { weather } = this.state;
     for (let d = 1; d <= momenter.daysInMonth(); d++) {
+      let dIndex = d - todayDate
       daysInMonth.push(
         <DaySlot
           key={'Day' + d} selected={(d === currentDate)}
@@ -74,16 +91,16 @@ class CalendarBody extends React.Component {
         >
           <DaySpan>{d}</DaySpan>
           {
-            (0 <= (d - todayDate) &&
-              (d - todayDate) <= 4) &&
+            (0 <= (d - todayDate)) &&
+            (dIndex <= 4) &&
             weather &&
-            <WeatherReport daysWeather={weather[d]} />
+            <WeatherReport daysWeather={weather[dIndex]} />
           }
         </DaySlot>
       )
     }
 
-    var totalSlots = [...startBlanks, ...daysInMonth, ...endBlanks]
+    let totalSlots = [...startBlanks, ...daysInMonth, ...endBlanks]
     let rows = [];
     let cells = [];
 
