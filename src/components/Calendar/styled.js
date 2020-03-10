@@ -1,5 +1,36 @@
 import styled from 'styled-components';
 
+// CalendarHeader
+export const HeaderContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  font-size: 3.6em;
+  height: 60px;
+  `
+export const MonthYearContainer = styled.div`
+  display: inline-flex;
+  justify-content: space-between;
+  width: 27%;
+  flex-grow: 1;
+  justify-content: center;
+  `
+export const FlexCenter = styled.div`
+  width:90%;
+  display: inline-flex;
+  justify-content: space-between;
+  @media only screen and (min-width: 580px) and (orientation: landscape){
+    justify-content: space-around;
+  }
+  @media only screen and (min-width: 824px) and (orientation: landscape){
+    justify-content: center;
+  }
+`
+export const FlexSpacer = styled.div`
+  @media only screen and (min-width: 824px) and (orientation: landscape){
+    width: 35px;
+  }
+`
+// CalendarBody
 export const CalContainer = styled.div`
   background-color: black;
   padding-bottom: 1px;
