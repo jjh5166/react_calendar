@@ -107,3 +107,15 @@ export const ShowTemp = styled.div`
     margin-top: -7px;
   }
 `
+// Arrow
+const MonthArrow = styled.div`
+  cursor: pointer;
+  ${props => (props.state === 'left' ? `margin-left: 1%` : `margin-right: 1%`)};
+`
+// Calendar 
+export const CalendarContainer = styled.div`
+  height:100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  `
