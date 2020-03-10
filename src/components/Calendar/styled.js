@@ -89,9 +89,6 @@ export const WeatherContainer = styled.div`
     height: auto;
     margin: 0 auto;
   }
-  @media only screen and (min-width: 660px) and (orientation: landscape){
-      
-  }
   @media ${device.laptop} {
     top: 0;
     right: 0;
@@ -108,7 +105,7 @@ export const ShowTemp = styled.div`
   }
 `
 // Arrow
-const MonthArrow = styled.div`
+export const MonthArrow = styled.div`
   cursor: pointer;
   ${props => (props.state === 'left' ? `margin-left: 1%` : `margin-right: 1%`)};
 `
