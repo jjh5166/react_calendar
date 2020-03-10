@@ -1,5 +1,6 @@
-import React, { useEffect, useState, useRef } from "react";
-import styled from 'styled-components';
+import React, { useEffect, useState, useRef } from 'react';
+
+import { DropdownContainer, DropdownMenu, DropdownItem } from './styled';
 
 const Dropdown = ({ value, options, placeholder = "Select", onChange }) => {
   const node = useRef();
@@ -47,27 +48,5 @@ const Dropdown = ({ value, options, placeholder = "Select", onChange }) => {
     </DropdownContainer>
   );
 };
-const DropdownContainer = styled.div`
-  cursor: pointer;
-  width: fit-content;
-  z-index: 5;
-  span{
-    line-height: 100%;
-  }
-`
-const DropdownMenu = styled.ul`
-  position: absolute;
-  background: white;
-  border: 2px solid black;
-  border-radius: 25px;
-  overflow:scroll;
-  height: 300px;
-`
-const DropdownItem = styled.li`
-  cursor: pointer;
-  list-style-type: none;
-  &:hover {
-    background-color: lightblue;
-  };
-`
+
 export default Dropdown;
