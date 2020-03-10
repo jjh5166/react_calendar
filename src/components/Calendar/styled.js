@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../constants';
 
 // CalendarHeader
 export const HeaderContainer = styled.div`
@@ -18,15 +19,15 @@ export const FlexCenter = styled.div`
   width:90%;
   display: inline-flex;
   justify-content: space-between;
-  @media only screen and (min-width: 580px) and (orientation: landscape){
+  @media ${device.landscapeMobile} {
     justify-content: space-around;
   }
-  @media only screen and (min-width: 824px) and (orientation: landscape){
+  @media ${device.laptop} {
     justify-content: center;
   }
 `
 export const FlexSpacer = styled.div`
-  @media only screen and (min-width: 824px) and (orientation: landscape){
+  @media ${device.laptop} {
     width: 35px;
   }
 `
@@ -49,7 +50,7 @@ export const DatesRow = styled(CalRow)`
   height: 60px;
   margin-bottom: 1px;
   grid-gap: 1px;
-  @media only screen and (min-width: 824px) and (orientation: landscape){
+  @media ${device.laptop} {
     height: 90px;
   }
 `
@@ -91,7 +92,7 @@ export const WeatherContainer = styled.div`
   @media only screen and (min-width: 660px) and (orientation: landscape){
       
   }
-  @media only screen and (min-width: 824px) and (orientation: landscape){
+  @media ${device.laptop} {
     top: 0;
     right: 0;
     width: auto;
@@ -100,7 +101,7 @@ export const WeatherContainer = styled.div`
 `
 export const ShowTemp = styled.div`
   display: none;
-  @media only screen and (min-width: 824px) and (orientation: landscape){
+  @media ${device.laptop} {
     display: block;
     text-align: center;
     margin-top: -7px;
