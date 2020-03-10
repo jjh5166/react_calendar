@@ -1,6 +1,7 @@
-import React from "react";
-import styled from 'styled-components';
+import React from 'react';
+
 import { withMomenter } from '../Momenter';
+import { MonthArrow } from './styled';
 
 function CalendarArrow(props) {
   switch (props.state) {
@@ -22,8 +23,5 @@ function CalendarArrow(props) {
       return null
   }
 }
-const MonthArrow = styled.div`
-  cursor: pointer;
-  ${props => (props.state === 'left' ? `margin-left: 1%` : `margin-right: 1%`)};
-`
+
 export default withMomenter(CalendarArrow);

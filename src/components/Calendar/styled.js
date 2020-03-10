@@ -1,5 +1,37 @@
 import styled from 'styled-components';
+import { device } from '../../constants';
 
+// CalendarHeader
+export const HeaderContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  font-size: 3.6em;
+  height: 60px;
+  `
+export const MonthYearContainer = styled.div`
+  display: inline-flex;
+  justify-content: space-between;
+  width: 27%;
+  flex-grow: 1;
+  justify-content: center;
+  `
+export const FlexCenter = styled.div`
+  width:90%;
+  display: inline-flex;
+  justify-content: space-between;
+  @media ${device.landscapeMobile} {
+    justify-content: space-around;
+  }
+  @media ${device.laptop} {
+    justify-content: center;
+  }
+`
+export const FlexSpacer = styled.div`
+  @media ${device.laptop} {
+    width: 35px;
+  }
+`
+// CalendarBody
 export const CalContainer = styled.div`
   background-color: black;
   padding-bottom: 1px;
@@ -18,7 +50,7 @@ export const DatesRow = styled(CalRow)`
   height: 60px;
   margin-bottom: 1px;
   grid-gap: 1px;
-  @media only screen and (min-width: 824px) and (orientation: landscape){
+  @media ${device.laptop} {
     height: 90px;
   }
 `
@@ -57,10 +89,7 @@ export const WeatherContainer = styled.div`
     height: auto;
     margin: 0 auto;
   }
-  @media only screen and (min-width: 660px) and (orientation: landscape){
-      
-  }
-  @media only screen and (min-width: 824px) and (orientation: landscape){
+  @media ${device.laptop} {
     top: 0;
     right: 0;
     width: auto;
@@ -69,9 +98,21 @@ export const WeatherContainer = styled.div`
 `
 export const ShowTemp = styled.div`
   display: none;
-  @media only screen and (min-width: 824px) and (orientation: landscape){
+  @media ${device.laptop} {
     display: block;
     text-align: center;
     margin-top: -7px;
   }
 `
+// Arrow
+export const MonthArrow = styled.div`
+  cursor: pointer;
+  ${props => (props.state === 'left' ? `margin-left: 1%` : `margin-right: 1%`)};
+`
+// Calendar 
+export const CalendarContainer = styled.div`
+  height:100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  `

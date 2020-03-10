@@ -1,9 +1,10 @@
 import React from 'react';
 import moment from 'moment';
-import styled from 'styled-components';
+
 import Momenter, { MomenterContext } from '../Momenter'
 import CalendarBody from './CalendarBody';
 import CalendarHeader from './CalendarHeader';
+import { CalendarContainer } from './styled';
 
 export default class Calendar extends React.Component {
   constructor(props) {
@@ -28,7 +29,3 @@ export default class Calendar extends React.Component {
     );
   }
 }
-
-const CalendarContainer = styled.div`
-  height:100%;
-  width: 100%;`
