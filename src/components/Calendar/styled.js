@@ -7,14 +7,21 @@ export const HeaderContainer = styled.div`
   justify-content: space-between;
   font-size: 3.6em;
   height: 60px;
-  `
+  outline: solid black 1px;
+  @media ${device.landscapeMobile} {
+    height: unset;
+  }
+  @media ${device.laptop} {
+
+  }
+`
 export const MonthYearContainer = styled.div`
   display: inline-flex;
   justify-content: space-between;
   width: 27%;
   flex-grow: 1;
   justify-content: center;
-  `
+`
 export const FlexCenter = styled.div`
   width:90%;
   display: inline-flex;
@@ -32,9 +39,19 @@ export const FlexSpacer = styled.div`
   }
 `
 // CalendarBody
-export const CalContainer = styled.div`
+export const CalBodyContainer = styled.div`
   background-color: black;
-  padding-bottom: 1px;
+  padding: 1px;
+  height: 350px;
+  max-width: 100%;
+  display: grid;
+  grid-template-rows: 24px 1fr;
+  @media ${device.landscapeMobile} {
+    height: unset;
+  }
+  @media ${device.laptop} {
+
+  }
 `
 export const CalRow = styled.div`
   display: grid;
@@ -44,15 +61,17 @@ export const WeekdayHeader = styled(CalRow)`
   position: relative;
   height: 24px;
   outline: solid green 2px;
+  outline-offset: -1px;
   z-index: 2;
 `
+export const DatesFlex = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 export const DatesRow = styled(CalRow)`
-  height: 60px;
   margin-bottom: 1px;
   grid-gap: 1px;
-  @media ${device.laptop} {
-    height: 90px;
-  }
+  flex: 1;
 `
 export const CalSlot = styled.div`
   height: 100%;
@@ -108,11 +127,45 @@ export const ShowTemp = styled.div`
 export const MonthArrow = styled.div`
   cursor: pointer;
   ${props => (props.state === 'left' ? `margin-left: 1%` : `margin-right: 1%`)};
+  i{
+    font-size: 60px;
+    @media ${device.landscapeMobile} {
+      font-size: 50px;
+    }
+    @media ${device.laptop} {
+
+    }
+  }
 `
 // Calendar 
 export const CalendarContainer = styled.div`
+  overflow: hidden;
   height:100%;
   width: 100%;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
-  `
+  @media ${device.landscapeMobile} {
+    /* flex-direction: row; */
+    flex-wrap: wrap;
+  }
+  @media ${device.laptop} {
+
+  }
+`
+export const OptionalWrapper = styled.div`
+  display: unset;
+  @media ${device.landscapeMobile} {
+    display: grid;
+    grid-template-rows: 13% 1fr;
+    width: 50%;
+    height: 100%;
+
+  }
+  @media ${device.laptop} {
+    width: 60%;
+    padding: 25px;
+    grid-template-rows: 8% 1fr;
+    grid-row-gap: 12px;
+  }
+`

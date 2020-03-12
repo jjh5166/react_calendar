@@ -3,7 +3,7 @@ import axios from 'axios';
 import { withMomenter } from '../Momenter';
 
 import {
-  CalContainer, WeekdayHeader, DatesRow, WeekdaySlot,
+  CalBodyContainer, WeekdayHeader, DatesFlex, DatesRow, WeekdaySlot,
   DaySlot, DaySpan, DayName, WeatherContainer, ShowTemp
 } from './styled';
 
@@ -127,10 +127,12 @@ class CalendarBody extends React.Component {
       )
     })
     return (
-      <CalContainer>
+      <CalBodyContainer>
         <WeekdayHeader>{weekdays}</WeekdayHeader>
-        {calendarDates}
-      </CalContainer>
+        <DatesFlex>
+          {calendarDates}
+        </DatesFlex>
+      </CalBodyContainer>
     );
   }
 }
