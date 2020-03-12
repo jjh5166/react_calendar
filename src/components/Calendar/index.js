@@ -4,7 +4,8 @@ import moment from 'moment';
 import Momenter, { MomenterContext } from '../Momenter'
 import CalendarBody from './CalendarBody';
 import CalendarHeader from './CalendarHeader';
-import { CalendarContainer } from './styled';
+import DayShow from '../DayShow';
+import { CalendarContainer, OptionalWrapper } from './styled';
 
 export default class Calendar extends React.Component {
   constructor(props) {
@@ -22,8 +23,11 @@ export default class Calendar extends React.Component {
     return (
       <MomenterContext.Provider value={new Momenter(this.state.dateContext, this.updateDateContext)}>
         <CalendarContainer>
-          <CalendarHeader />
-          <CalendarBody />
+          <OptionalWrapper>
+            <CalendarHeader />
+            <CalendarBody />
+          </OptionalWrapper>
+          <DayShow />
         </CalendarContainer>
       </MomenterContext.Provider>
     );
