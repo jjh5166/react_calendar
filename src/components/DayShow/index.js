@@ -1,13 +1,20 @@
 import React from 'react';
-
-import { DayShowContainer } from './styled';
+import { withMomenter } from '../Momenter';
+import { DayShowContainer, EventItem, EventList } from './styled';
 
 function DayShow(props) {
+  let { momenter } = props
   return(
     <DayShowContainer>
-
+      <EventList date={momenter.currentDate()}>
+        {
+          [...Array(5)].map((_, i) => {
+            return (<EventItem key={'evIteem'+i}/>)
+          })
+        }
+      </EventList>
     </DayShowContainer>
   )
 }
 
-export default DayShow;
+export default withMomenter(DayShow);

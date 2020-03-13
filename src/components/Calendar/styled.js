@@ -8,11 +8,14 @@ export const HeaderContainer = styled.div`
   font-size: 3.6em;
   height: 60px;
   outline: solid black 1px;
+  overflow: hidden;
   @media ${device.landscapeMobile} {
     height: unset;
   }
   @media ${device.laptop} {
-
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 10px;
   }
 `
 export const MonthYearContainer = styled.div`
@@ -50,7 +53,9 @@ export const CalBodyContainer = styled.div`
     height: unset;
   }
   @media ${device.laptop} {
-
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 30px;
   }
 `
 export const CalRow = styled.div`
@@ -146,11 +151,10 @@ export const CalendarContainer = styled.div`
   display: flex;
   flex-direction: column;
   @media ${device.landscapeMobile} {
-    /* flex-direction: row; */
     flex-wrap: wrap;
+    flex-direction: row;
   }
   @media ${device.laptop} {
-
   }
 `
 export const OptionalWrapper = styled.div`
@@ -160,11 +164,9 @@ export const OptionalWrapper = styled.div`
     grid-template-rows: 13% 1fr;
     width: 50%;
     height: 100%;
-
   }
   @media ${device.laptop} {
     width: 60%;
-    padding: 25px;
     grid-template-rows: 8% 1fr;
     grid-row-gap: 12px;
   }
