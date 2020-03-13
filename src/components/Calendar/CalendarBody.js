@@ -36,12 +36,12 @@ class CalendarBody extends React.Component {
     const noonEx = /12:/
     let parsedWeather = [list[0]]
     let gotWeather = []
-    for(let i=0; i < list.length; i++){
+    for (let i = 0; i < list.length; i++) {
       let time = list[i]["dt_txt"];
-      if(i===0){
+      if (i === 0) {
         gotWeather.push(time.match(dateEx)[0])
       }
-      if (noonEx.test(time) && !gotWeather.includes(time.match(dateEx)[0])){
+      if (noonEx.test(time) && !gotWeather.includes(time.match(dateEx)[0])) {
         parsedWeather.push(list[i])
       }
     }
@@ -79,15 +79,18 @@ class CalendarBody extends React.Component {
     }
 
     let daysInMonth = [];
-    let currentDate = momenter.currentDate();
     let todayDate = momenter.todayDate();
+    let conserveDate = momenter.conserveDate
+    let checkDate = momenter.dateContext.format('YYYY MM');
+    let currentMonth = true ? (conserveDate === checkDate) : false
     let { weather } = this.state;
     for (let d = 1; d <= momenter.daysInMonth(); d++) {
       let dIndex = d - todayDate
       daysInMonth.push(
         <DaySlot
-          key={'Day' + d} selected={(d === currentDate)}
+          key={'Day' + d}
           onClick={(e) => { momenter.onSelectDay(e, d) }}
+          selected={(d === todayDate)} today={((d === todayDate) && currentMonth)}
         >
           <DaySpan>{d}</DaySpan>
           {

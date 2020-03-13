@@ -91,6 +91,7 @@ export const DaySlot = styled(CalSlot)`
   position: relative;
   cursor: pointer;
   background-color: ${props => props.selected ? "grey" : "white"};
+  ${props => props.today && 'text-decoration: underline'};
 `
 export const DaySpan = styled.span`
   margin-left: 5%;
