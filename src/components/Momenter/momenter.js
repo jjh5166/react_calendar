@@ -8,6 +8,7 @@ class Momenter {
     this.weekdaysShort = moment.weekdaysShort();
     this.weekdays = moment.weekdays();
     this.today = moment()
+    this.conserveDate = this.today.format('YYYY MM'); 
   }
   year = () => this.dateContext.format("Y");
 
