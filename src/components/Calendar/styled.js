@@ -152,9 +152,9 @@ export const CalendarContainer = styled.div`
   flex-direction: column;
   @media ${device.landscapeMobile} {
     flex-wrap: wrap;
+    flex-direction: row;
   }
   @media ${device.laptop} {
-    flex-direction: row;
   }
 `
 export const OptionalWrapper = styled.div`
