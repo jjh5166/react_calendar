@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { withMomenter } from '../Momenter';
 
 import {
@@ -7,7 +7,6 @@ import {
 } from './styled';
 
 const CalendarBody = ({ momenter, weather }) => {
-
   let weekdays = momenter.weekdays.map((dayName) => {
     return (
       <WeekdaySlot key={dayName}>
@@ -31,6 +30,7 @@ const CalendarBody = ({ momenter, weather }) => {
   let daysInMonth = [];
   let todayDate = momenter.todayDate();
   let conserveDate = momenter.conserveDate
+  let currentDate = momenter.currentDate();
   let checkDate = momenter.dateContext.format('YYYY MM');
   let currentMonth = true ? (conserveDate === checkDate) : false
   for (let d = 1; d <= momenter.daysInMonth(); d++) {
@@ -39,7 +39,7 @@ const CalendarBody = ({ momenter, weather }) => {
       <DaySlot
         key={'Day' + d}
         onClick={(e) => { momenter.onSelectDay(e, d) }}
-        selected={(d === todayDate)} today={((d === todayDate) && currentMonth)}
+        selected={(d === currentDate)} today={((d === todayDate) && currentMonth)}
       >
         <DaySpan>{d}</DaySpan>
         {
