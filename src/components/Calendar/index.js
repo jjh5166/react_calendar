@@ -4,12 +4,17 @@ import moment from 'moment';
 
 import Momenter, { MomenterContext } from '../Momenter';
 import { withGeo } from '../GeoLoc'
-import { fetchWeather } from '../../actions/weather';
+import { getWeather } from '../../actions/weather';
 
 import CalendarBody from './CalendarBody';
 import CalendarHeader from './CalendarHeader';
 import DayShow from '../DayShow';
 import { CalendarContainer, OptionalWrapper } from './styled';
+
+const DEFAULT_COORDS = {
+  lat: 51.5073,
+  lon: -0.1277
+}
 
 class Calendar extends React.Component {
   constructor(props) {
@@ -22,7 +27,7 @@ class Calendar extends React.Component {
     this.setState({ dateContext })
   }
   componentDidMount() {
-    this.props.dispatch(fetchWeather());
+    this.props.dispatch(getWeather(DEFAULT_COORDS));
   }
   render() {
     return (

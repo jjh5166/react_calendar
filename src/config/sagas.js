@@ -1,20 +1,16 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
 
-import { FETCH_WEATHER, FETCH_ERROR, WEATHER_RESULT } from '../actions/weather';
+import { GET_WEATHER, FETCH_ERROR, WEATHER_RESULT } from '../actions/weather';
 
 const WEATHER_API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 const PATH_BASE = 'https://api.openweathermap.org/data/2.5/forecast';
-const DEFAULT_COORDS = {
-  lat: 51.5073,
-  lon: -0.1277
-}
 const TEMP_TYPE = 'imperial'
 
-const getWeather = () => fetch(`${PATH_BASE}?lat=${DEFAULT_COORDS.lat}&lon=${DEFAULT_COORDS.lon}&units=${TEMP_TYPE}&appid=${WEATHER_API_KEY}`)
+const getWeather = (coords) => fetch(`${PATH_BASE}?lat=${coords.lat}&lon=${coords.lon}&units=${TEMP_TYPE}&appid=${WEATHER_API_KEY}`)
 
 function* fetchWeather(action) {
   try {
-    const response = yield call(getWeather);
+    const response = yield call(getWeather,action.coords);
     const result = yield response.json();
     if (result.error) {
       yield put({ type: FETCH_ERROR, error: result.error })
@@ -28,5 +24,5 @@ function* fetchWeather(action) {
 }
 
 export default function* rootSaga() {
-  yield takeEvery(FETCH_WEATHER, fetchWeather);
+  yield takeEvery(GET_WEATHER, fetchWeather);
 }
