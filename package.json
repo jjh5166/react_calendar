@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.19.2",
+    "minimist": "^1.2.5",
     "moment": "^2.24.0",
     "react": "^16.11.0",
     "react-div-100vh": "^0.3.8",
