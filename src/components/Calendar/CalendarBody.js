@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import { withMomenter } from '../Momenter';
 
 import {
@@ -6,7 +8,8 @@ import {
   DaySlot, DaySpan, DayName, WeatherContainer, ShowTemp
 } from './styled';
 
-const CalendarBody = ({ momenter, weather }) => {
+const CalendarBody = (props) => {
+  let { momenter, weather } = props
   let weekdays = momenter.weekdays.map((dayName) => {
     return (
       <WeekdaySlot key={dayName}>
@@ -33,6 +36,8 @@ const CalendarBody = ({ momenter, weather }) => {
   let currentDate = momenter.currentDate();
   let checkDate = momenter.dateContext.format('YYYY MM');
   let currentMonth = true ? (conserveDate === checkDate) : false
+  let weatherList = weather.list
+
   for (let d = 1; d <= momenter.daysInMonth(); d++) {
     let dIndex = d - todayDate
     daysInMonth.push(
@@ -45,8 +50,8 @@ const CalendarBody = ({ momenter, weather }) => {
         {
           (0 <= (d - todayDate)) &&
           (dIndex <= 4) &&
-          weather &&
-          <WeatherReport daysWeather={weather[dIndex]} />
+          weatherList &&
+          <WeatherReport daysWeather={weatherList[dIndex]} />
         }
       </DaySlot>
     )
@@ -98,4 +103,12 @@ const WeatherReport = ({ daysWeather }) => {
     </WeatherContainer>
   )
 }
-export default withMomenter(CalendarBody);
+
+const mapStateToProps = (state) => {
+  const weather = state.weather.weather;
+  return {
+    weather
+  };
+}
+
+export default connect(mapStateToProps)(withMomenter(CalendarBody));
