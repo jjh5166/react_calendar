@@ -35,7 +35,7 @@ class Calendar extends React.Component {
         <CalendarContainer>
           <OptionalWrapper>
             <CalendarHeader />
-            <CalendarBody weather={this.state.weather}/>
+            <CalendarBody />
           </OptionalWrapper>
           <DayShow />
         </CalendarContainer>
@@ -44,11 +44,4 @@ class Calendar extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-
-  return {
-
-  };
-}
-
-export default connect(mapStateToProps)(withGeo(Calendar));
+export default connect()(withGeo(Calendar));

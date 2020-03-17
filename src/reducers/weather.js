@@ -6,7 +6,7 @@ const initialState = {
 const setWeather = (result) => {
   let parsed = {
     city: result['city'],
-    weather: parseWeather(result['list']),
+    list: parseWeather(result['list']),
   }
   return parsed
 }
