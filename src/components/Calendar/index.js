@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 
 import Momenter, { MomenterContext } from '../Momenter';
-import { withGeo } from '../GeoLoc'
 import { getWeather } from '../../actions/weather';
 
 import CalendarBody from './CalendarBody';
@@ -23,15 +22,29 @@ class Calendar extends React.Component {
       dateContext: moment(),
     };
   }
+  locSuccess = (position) => {
+    this.props.dispatch(getWeather(
+      {
+        lat: position.coords.latitude,
+        lon: position.coords.longitude,
+      }
+    ));
+  }
+  locFail = () => {
+    this.props.dispatch(getWeather(DEFAULT_COORDS));
+  }
   updateDateContext = (dateContext) => {
     this.setState({ dateContext })
   }
   componentDidMount() {
-    this.props.dispatch(getWeather(DEFAULT_COORDS));
+    navigator.geolocation.getCurrentPosition(this.locSuccess, this.locFail);
   }
   render() {
     return (
-      <MomenterContext.Provider value={new Momenter(this.state.dateContext, this.updateDateContext)}>
+      <MomenterContext.Provider
+        value={new Momenter(this.state.dateContext,
+          this.updateDateContext)}
+      >
         <CalendarContainer>
           <OptionalWrapper>
             <CalendarHeader />
@@ -44,4 +57,4 @@ class Calendar extends React.Component {
   }
 }
 
-export default connect()(withGeo(Calendar));
+export default connect()(Calendar);
