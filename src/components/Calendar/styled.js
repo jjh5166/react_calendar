@@ -7,7 +7,6 @@ export const HeaderContainer = styled.div`
   justify-content: space-between;
   font-size: 3.6em;
   height: 60px;
-  outline: solid black 1px;
   overflow: hidden;
   @media ${device.landscapeMobile} {
     height: unset;
