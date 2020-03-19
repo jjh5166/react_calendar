@@ -4,6 +4,7 @@ import moment from 'moment';
 
 import Momenter, { MomenterContext } from '../Momenter';
 import { getWeather } from '../../actions/weather';
+import { getOnToday } from '../../actions/onThisDay'
 
 import CalendarBody from './CalendarBody';
 import CalendarHeader from './CalendarHeader';
@@ -38,6 +39,7 @@ class Calendar extends React.Component {
   }
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(this.locSuccess, this.locFail);
+    this.props.dispatch(getOnToday());
   }
   render() {
     return (
