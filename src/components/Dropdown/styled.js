@@ -6,6 +6,8 @@ export const DropdownContainer = styled.div`
   z-index: 5;
   display: flex;
   span{
+    display: inline-flex;
+    align-items: center;
     align-self: stretch;
   }
 `

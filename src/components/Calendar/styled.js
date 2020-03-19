@@ -28,11 +28,14 @@ export const FlexCenter = styled.div`
   width:90%;
   display: inline-flex;
   justify-content: space-between;
+  font-size: 56px;
   @media ${device.landscapeMobile} {
     justify-content: space-around;
+    font-size: 45px;
   }
   @media ${device.laptop} {
     justify-content: center;
+    font-size: 60px;
   }
 `
 export const FlexSpacer = styled.div`
