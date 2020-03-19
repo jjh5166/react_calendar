@@ -4,8 +4,11 @@ export const DropdownContainer = styled.div`
   cursor: pointer;
   width: fit-content;
   z-index: 5;
+  display: flex;
   span{
-    line-height: 100%;
+    display: inline-flex;
+    align-items: center;
+    align-self: stretch;
   }
 `
 export const DropdownMenu = styled.ul`

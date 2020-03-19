@@ -7,7 +7,6 @@ export const HeaderContainer = styled.div`
   justify-content: space-between;
   font-size: 3.6em;
   height: 60px;
-  outline: solid black 1px;
   overflow: hidden;
   @media ${device.landscapeMobile} {
     height: unset;
@@ -29,11 +28,14 @@ export const FlexCenter = styled.div`
   width:90%;
   display: inline-flex;
   justify-content: space-between;
+  font-size: 56px;
   @media ${device.landscapeMobile} {
     justify-content: space-around;
+    font-size: 45px;
   }
   @media ${device.laptop} {
     justify-content: center;
+    font-size: 60px;
   }
 `
 export const FlexSpacer = styled.div`
@@ -131,17 +133,11 @@ export const ShowTemp = styled.div`
 `
 // Arrow
 export const MonthArrow = styled.div`
+  font-size: min(max(42px, 5vw), 50px);
   cursor: pointer;
+  display: flex;
+  align-items: center;
   ${props => (props.state === 'left' ? `margin-left: 1%` : `margin-right: 1%`)};
-  i{
-    font-size: 60px;
-    @media ${device.landscapeMobile} {
-      font-size: 50px;
-    }
-    @media ${device.laptop} {
-
-    }
-  }
 `
 // Calendar 
 export const CalendarContainer = styled.div`
