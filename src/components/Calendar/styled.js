@@ -130,17 +130,11 @@ export const ShowTemp = styled.div`
 `
 // Arrow
 export const MonthArrow = styled.div`
+  font-size: min(max(42px, 5vw), 50px);
   cursor: pointer;
+  display: flex;
+  align-items: center;
   ${props => (props.state === 'left' ? `margin-left: 1%` : `margin-right: 1%`)};
-  i{
-    font-size: 60px;
-    @media ${device.landscapeMobile} {
-      font-size: 50px;
-    }
-    @media ${device.laptop} {
-
-    }
-  }
 `
 // Calendar 
 export const CalendarContainer = styled.div`
