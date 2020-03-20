@@ -1,11 +1,10 @@
-import { GET_ONTODAY, GET_ONTHATDAY, ONTHISDAY_RESULT, ONTHISDAY_ERROR } from '../actions/onThisDay';
+import { GET_ONTHISDAY, ONTHISDAY_RESULT, ONTHISDAY_ERROR } from '../actions/onThisDay';
 
 const initialState = {
-  onThisDay: {
-    data: {},
-    error: null
-  }
+  data: {},
+  error: null
 }
+
 const randomIndexes = (max) => {
   let randos = [];
   for (var i = 0; randos.length < 5; i++) {
@@ -16,27 +15,38 @@ const randomIndexes = (max) => {
   }
   return randos
 }
-const setOnThisDay = (events) => {
+const parseEvents = (events) => {
   let indexi = randomIndexes(events.length)
   let selectedEvents = []
   indexi.forEach(ev => selectedEvents.push(events[ev]))
   return selectedEvents
 }
+const setOnThisDay = (state, action) => {
+  let dateData = {
+    isFetching: true,
+    events: []
+  };
+  return {
+    ...state.data,
+    [action.date]: dateData
+  }
+}
 export default (state = initialState, action) => {
   switch (action.type) {
-    case GET_ONTODAY:
+    case GET_ONTHISDAY:
       return {
         ...state,
-      }
-    case GET_ONTHATDAY:
-      return {
-        ...state,
+        data: setOnThisDay(state, action)
       }
     case ONTHISDAY_RESULT:
       return {
         ...state,
-        onThisDay: {
-          data: setOnThisDay(action.response.data.data.Events)
+        data: {
+          ...state.data,
+          [action.date]: {
+            isFetching: false,
+            events: parseEvents(action.response.data.data.Events)
+          }
         }
       }
     case ONTHISDAY_ERROR:
