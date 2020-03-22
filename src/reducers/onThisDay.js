@@ -28,7 +28,7 @@ const setOnThisDay = (state, action) => {
   };
   return {
     ...state.data,
-    [action.date]: dateData
+    [`${action.date}`]: dateData
   }
 }
 export default (state = initialState, action) => {
@@ -43,7 +43,7 @@ export default (state = initialState, action) => {
         ...state,
         data: {
           ...state.data,
-          [action.date]: {
+          [`${action.date}`]: {
             isFetching: false,
             events: parseEvents(action.response.data.data.Events)
           }
