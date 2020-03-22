@@ -41,6 +41,9 @@ class Calendar extends React.Component {
     navigator.geolocation.getCurrentPosition(this.locSuccess, this.locFail);
     this.props.dispatch(getOnThisDay(this.state.dateContext.format('M[/]D')));
   }
+  componentDidUpdate(){
+    this.props.dispatch(getOnThisDay(this.state.dateContext.format('M[/]D')));
+  }
   render() {
     return (
       <MomenterContext.Provider
