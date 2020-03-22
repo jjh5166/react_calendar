@@ -2,13 +2,14 @@ import moment from "moment";
 
 class Momenter {
   constructor(dateContext, updater) {
-    this.dateContext = dateContext;
-    this.updateDateContext = updater;
-    this.months = moment.months();
-    this.weekdaysShort = moment.weekdaysShort();
-    this.weekdays = moment.weekdays();
+    this.dateContext = dateContext
+    this.updateDateContext = updater
+    this.months = moment.months()
+    this.weekdaysShort = moment.weekdaysShort()
+    this.weekdays = moment.weekdays()
     this.today = moment()
-    this.conserveDate = this.today.format('YYYY MM'); 
+    this.conserveDate = this.today.format('YYYY MM')
+    this.otdDate = this.dateContext.format('M[/]D')
   }
   year = () => this.dateContext.format("Y");
 
