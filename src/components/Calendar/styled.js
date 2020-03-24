@@ -47,7 +47,7 @@ export const FlexSpacer = styled.div`
 export const CalBodyContainer = styled.div`
   background-color: black;
   padding: 1px;
-  height: 350px;
+  height: 40vh;
   max-width: 100%;
   display: grid;
   grid-template-rows: 24px 1fr;
@@ -79,6 +79,7 @@ export const DatesRow = styled(CalRow)`
   margin-bottom: 1px;
   grid-gap: 1px;
   flex: 1;
+  height: 2px;
 `
 export const CalSlot = styled.div`
   height: 100%;
@@ -93,7 +94,7 @@ export const DaySlot = styled(CalSlot)`
   position: relative;
   cursor: pointer;
   background-color: ${props => props.selected ? "grey" : "white"};
-  ${props => props.today && 'text-decoration: underline'};
+  ${props => props.today && 'text-decoration: underline; font-weight: bold;'};
 `
 export const DaySpan = styled.span`
   margin-left: 5%;
