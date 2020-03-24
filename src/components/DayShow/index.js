@@ -2,16 +2,16 @@ import React from 'react';
 
 import { withMomenter } from '../Momenter';
 import OnThisDay from './OnThisDay'
-import { DayShowContainer, EventList } from './styled';
+import { DayShowContainer, DayShowInner } from './styled';
 
 function DayShow(props) {
   let { momenter } = props;
 
   return(
     <DayShowContainer>
-      <EventList date={momenter.currentDate()}>
+      <DayShowInner date={momenter.currentDate()}>
         <OnThisDay/>
-      </EventList>
+      </DayShowInner>
     </DayShowContainer>
   )
 }

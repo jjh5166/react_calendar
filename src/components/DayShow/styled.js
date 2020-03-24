@@ -16,17 +16,21 @@ export const DayShowContainer = styled.div`
     width: 40%;
   }
 `
-export const EventList = styled.div`
+export const DayShowInner = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 80%;
-  width: 80%;
-  @media ${device.laptop} {
+  @media ${device.landscapeMobile} {
+    height: 90%;
+    width: 90%;
     border-radius: 30px;
     border: solid black 2px;
+  }
+  @media ${device.laptop} {
+    height: 80%;
+    width: 80%;
   }
   &:before {
     position: absolute;
