@@ -105,7 +105,7 @@ const WeatherReport = ({ daysWeather }) => {
 }
 
 const mapStateToProps = (state) => {
-  const weather = state.weather.weather;
+  const weather = state.weather;
   return {
     weather
   };

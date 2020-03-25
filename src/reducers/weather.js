@@ -1,8 +1,6 @@
 import { GET_WEATHER, FETCH_ERROR, WEATHER_RESULT } from '../actions/weather';
 
-const initialState = {
-  weather: {},
-}
+const initialState = {}
 const setWeather = (result) => {
   let parsed = {
     city: result['city'],
@@ -36,7 +34,7 @@ const reducer = (state = initialState, action) => {
     case WEATHER_RESULT:
       return {
         ...state,
-        weather: setWeather(action.result),
+        ...setWeather(action.result),
       }
     case FETCH_ERROR:
       return {
