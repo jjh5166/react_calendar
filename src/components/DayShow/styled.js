@@ -4,29 +4,18 @@ import { device } from '../../constants';
 export const DayShowContainer = styled.div`
   position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  flex: 1;
-  @media ${device.landscapeMobile} {
-    width: 50%;
-  }
-  @media ${device.laptop} {
-    width: 40%;
-  }
-`
-export const DayShowInner = styled.div`
-  position: relative;
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex: 1;
+  order: 1;
   @media ${device.landscapeMobile} {
+    order: 2;
     height: 90%;
     width: 90%;
     border-radius: 30px;
     border: solid black 2px;
+    flex: none;
   }
   @media ${device.laptop} {
     height: 80%;

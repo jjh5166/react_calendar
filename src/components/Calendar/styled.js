@@ -7,7 +7,6 @@ export const HeaderContainer = styled.div`
   justify-content: space-between;
   font-size: 3.6em;
   height: 60px;
-  overflow: hidden;
   @media ${device.landscapeMobile} {
     height: unset;
   }
@@ -167,5 +166,22 @@ export const OptionalWrapper = styled.div`
     width: 60%;
     grid-template-rows: 8% 1fr;
     grid-row-gap: 12px;
+  }
+`
+export const DayContainer = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  flex: 1;
+  @media ${device.landscapeMobile} {
+    width: 50%;
+    justify-content: space-around;
+  }
+  @media ${device.laptop} {
+    width: 40%;
   }
 `

@@ -1,7 +1,7 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
 import axios from 'axios'
 import { GET_WEATHER, FETCH_ERROR, WEATHER_RESULT } from '../actions/weather';
-import { GET_ONTHISDAY, ONTHISDAY_RESULT, ONTHISDAY_ERROR } from '../actions/onThisDay';
+import { GET_ONTHISDAY, ONTHISDAY_RESULT } from '../actions/onThisDay';
 
 const WEATHER_API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 const PATH_BASE = 'https://api.openweathermap.org/data/2.5/forecast';
