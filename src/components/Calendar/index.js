@@ -9,7 +9,8 @@ import { getOnThisDay } from '../../actions/onThisDay';
 import CalendarBody from './CalendarBody';
 import CalendarHeader from './CalendarHeader';
 import DayShow from '../DayShow';
-import { CalendarContainer, OptionalWrapper } from './styled';
+import Locale from '../Locale'
+import { CalendarContainer, OptionalWrapper, DayContainer } from './styled';
 
 const DEFAULT_COORDS = {
   lat: 51.5073,
@@ -41,7 +42,7 @@ class Calendar extends React.Component {
     navigator.geolocation.getCurrentPosition(this.locSuccess, this.locFail);
     this.props.dispatch(getOnThisDay(this.state.dateContext.format('M[/]D')));
   }
-  componentDidUpdate(){
+  componentDidUpdate() {
     this.props.dispatch(getOnThisDay(this.state.dateContext.format('M[/]D')));
   }
   render() {
@@ -55,7 +56,11 @@ class Calendar extends React.Component {
             <CalendarHeader />
             <CalendarBody />
           </OptionalWrapper>
-          <DayShow />
+          <DayContainer>
+            <Locale />
+            <DayShow />
+          </DayContainer>
+          
         </CalendarContainer>
       </MomenterContext.Provider>
     );
