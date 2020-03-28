@@ -1,4 +1,4 @@
-import { FIND_LOCALE, LOCALE_RESULT, LOCALE_ERROR } from '../actions/locale';
+import { GOT_COORDS, FIND_LOCALE, LOCALE_RESULT, LOCALE_ERROR } from '../actions/locale';
 
 const initialState = {
   data: {},
@@ -8,14 +8,20 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case GOT_COORDS:
+      return {
+        ...state,
+        coords: action.coords,
+      }
     case FIND_LOCALE:
       return {
         ...state,
-        isFetching: true,
+        isLoading: true,
       }
     case LOCALE_RESULT:
       return {
         ...state,
+        data: action.response.data.address
       }
     case LOCALE_ERROR:
       return {
