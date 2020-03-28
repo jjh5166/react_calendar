@@ -1,4 +1,4 @@
-import { GET_WEATHER, FETCH_ERROR, WEATHER_RESULT } from '../actions/weather';
+import { GET_WEATHER, WEATHER_ERROR, WEATHER_RESULT } from '../actions/weather';
 
 const initialState = {}
 const setWeather = (result) => {
@@ -36,7 +36,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         ...setWeather(action.result),
       }
-    case FETCH_ERROR:
+    case WEATHER_ERROR:
       return {
         ...state,
       }

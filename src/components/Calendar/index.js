@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 
 import Momenter, { MomenterContext } from '../Momenter';
-import { getWeather } from '../../actions/weather';
 import { getOnThisDay } from '../../actions/onThisDay';
+import { gotCoords } from '../../actions/locale';
+import { getWeather } from '../../actions/weather';
 
 import CalendarBody from './CalendarBody';
 import CalendarHeader from './CalendarHeader';
@@ -25,7 +26,7 @@ class Calendar extends React.Component {
     };
   }
   locSuccess = (position) => {
-    this.props.dispatch(getWeather(
+    this.props.dispatch(gotCoords(
       {
         lat: position.coords.latitude,
         lon: position.coords.longitude,
