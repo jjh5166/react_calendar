@@ -9,13 +9,15 @@ const Locale = (props) => {
   return (
     <LocaleContainer>
       <Clock/>
-      <div>{"London, GB"}</div>
+      <div>{props.locale.city}</div>
     </LocaleContainer>
   )
 }
 
 const mapStateToProps = (state) => {
+  let locale = state.locale
   return {
+    locale
   };
 }
 
