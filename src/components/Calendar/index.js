@@ -34,7 +34,7 @@ class Calendar extends React.Component {
     ));
   }
   locFail = () => {
-    this.props.dispatch(getWeather(DEFAULT_COORDS));
+    this.props.dispatch(gotCoords(DEFAULT_COORDS));
   }
   updateDateContext = (dateContext) => {
     this.setState({ dateContext })
