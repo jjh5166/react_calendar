@@ -11,9 +11,9 @@ class Momenter {
     this.conserveDate = this.today.format('YYYY MM')
     this.otdDate = this.dateContext.format('M[/]D')
   }
-  year = () => this.dateContext.format("Y");
+  year = () => this.dateContext.format('Y');
 
-  month = () => this.dateContext.format("MMMM");
+  month = () => this.dateContext.format('MMMM');
 
   daysInMonth = () => this.dateContext.daysInMonth();
   
@@ -24,7 +24,7 @@ class Momenter {
   setMonth = (month) => {
     let monthNo = this.months.indexOf(month);
     let dateContext = {...this.dateContext}
-    dateContext = moment(dateContext).set("month", monthNo);
+    dateContext = moment(dateContext).set('M', monthNo);
     this.updateDateContext(dateContext);
   }
   setDate = (date) => {
@@ -34,22 +34,27 @@ class Momenter {
   }
   nextMonth = () => {
     let dateContext = {...this.dateContext}
-    dateContext = moment(dateContext).add(1, "month");
+    dateContext = moment(dateContext).add(1, 'M');
     this.updateDateContext(dateContext);
   }
   prevMonth = () => {
     let dateContext = { ...this.dateContext }
-    dateContext = moment(dateContext).subtract(1, "month");
+    dateContext = moment(dateContext).subtract(1, 'M');
     this.updateDateContext(dateContext);
   }
   firstDayOfMonth = () => {
     let dateContext = this.dateContext;
-    let firstDay = moment(dateContext).startOf('month').format('d');
+    let firstDay = moment(dateContext).startOf('M').format('d');
     return firstDay
   }
   lastDayOfMonth = () => {
     let dateContext = this.dateContext;
-    let lastDay = moment(dateContext).endOf('month').format('d');
+    let lastDay = moment(dateContext).endOf('M').format('d');
+    return lastDay
+  }
+  lastDayPrevMonth = () => {
+    let dateContext = this.dateContext;
+    let lastDay = moment(dateContext).subtract(1, 'M').endOf('M').format('DD');
     return lastDay
   }
   onSelectChange = (e, data) => {
@@ -60,7 +65,7 @@ class Momenter {
   }
   setYear = (year) => {
     let dateContext = { ...this.dateContext }
-    dateContext = moment(dateContext).set("year", year);
+    dateContext = moment(dateContext).set('y', year);
     this.updateDateContext(dateContext);
   }
 }

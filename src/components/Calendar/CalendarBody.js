@@ -12,14 +12,15 @@ const CalendarBody = (props) => {
   let { momenter, weather } = props
   let startBlanks = [];
   let endBlanks = [];
+  let ldpm = momenter.lastDayPrevMonth();
   for (let i = 0; i < momenter.firstDayOfMonth(); i++) {
     startBlanks.push(<DaySlot key={"startBlank" + i} className="emptySlot">
-      {""}
+      {ldpm - i}
     </DaySlot>)
   }
   for (let i = momenter.lastDayOfMonth(); i < 6; i++) {
     endBlanks.push(<DaySlot key={"endBlank" + i} className="emptySlot">
-      {""}
+      {6-i}
     </DaySlot>)
   }
 
@@ -29,7 +30,7 @@ const CalendarBody = (props) => {
   let currentDate = momenter.currentDate();
   let checkDate = momenter.dateContext.format('YYYY MM');
   let currentMonth = true ? (conserveDate === checkDate) : false
-  let weatherList = weather.list
+  let weatherList = currentMonth ? weather.list : null
 
   for (let d = 1; d <= momenter.daysInMonth(); d++) {
     let dIndex = d - todayDate
@@ -50,7 +51,7 @@ const CalendarBody = (props) => {
     )
   }
 
-  let totalSlots = [...startBlanks, ...daysInMonth, ...endBlanks]
+  let totalSlots = [...startBlanks.reverse(), ...daysInMonth, ...endBlanks.reverse()]
   let rows = [];
   let cells = [];
 
