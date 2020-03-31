@@ -5,7 +5,6 @@ import moment from 'moment';
 import Momenter, { MomenterContext } from '../Momenter';
 import { getOnThisDay } from '../../actions/onThisDay';
 import { gotCoords } from '../../actions/locale';
-import { getWeather } from '../../actions/weather';
 
 import CalendarBody from './CalendarBody';
 import CalendarHeader from './CalendarHeader';

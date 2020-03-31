@@ -1,6 +1,6 @@
 import React from 'react';
 import { withMomenter } from '../Momenter';
-import Dropdown from "../Dropdown";
+import Dropdown from '../Dropdown';
 
 function MonthNav(props) {
   const months = props.momenter.months;
