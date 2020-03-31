@@ -63,7 +63,7 @@ export const CalRow = styled.div`
   display: grid;
   grid-template-columns: repeat(7,1fr);
 `
-export const WeekdayHeader = styled(CalRow)`
+export const WeekdayHeaderContainer = styled(CalRow)`
   position: relative;
   height: 24px;
   outline: solid green 2px;

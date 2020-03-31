@@ -4,19 +4,12 @@ import { connect } from 'react-redux';
 import { withMomenter } from '../Momenter';
 
 import {
-  CalBodyContainer, WeekdayHeader, DatesFlex, DatesRow, WeekdaySlot,
+  CalBodyContainer, WeekdayHeaderContainer, DatesFlex, DatesRow, WeekdaySlot,
   DaySlot, DaySpan, DayName, WeatherContainer, ShowTemp
 } from './styled';
 
 const CalendarBody = (props) => {
   let { momenter, weather } = props
-  let weekdays = momenter.weekdays.map((dayName) => {
-    return (
-      <WeekdaySlot key={dayName}>
-        <DayName>{dayName}</DayName>
-      </WeekdaySlot>
-    )
-  })
   let startBlanks = [];
   let endBlanks = [];
   for (let i = 0; i < momenter.firstDayOfMonth(); i++) {
@@ -85,7 +78,7 @@ const CalendarBody = (props) => {
   })
   return (
     <CalBodyContainer>
-      <WeekdayHeader>{weekdays}</WeekdayHeader>
+      <WeekdayHeader/>
       <DatesFlex>
         {calendarDates}
       </DatesFlex>
@@ -93,6 +86,23 @@ const CalendarBody = (props) => {
   );
 
 }
+
+const WeekdayHeaderBase = (props) => {
+  let weekdays = props.momenter.weekdays.map((dayName) => {
+    return (
+      <WeekdaySlot key={dayName}>
+        <DayName>{dayName}</DayName>
+      </WeekdaySlot>
+    )
+  })
+  return(
+    <WeekdayHeaderContainer>
+      {weekdays}
+    </WeekdayHeaderContainer>
+  )
+}
+
+const WeekdayHeader = withMomenter(WeekdayHeaderBase);
 
 const WeatherReport = ({ daysWeather }) => {
   let iconType = daysWeather['weather'][0]['icon']
