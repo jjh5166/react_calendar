@@ -5,7 +5,7 @@ import { withMomenter } from '../Momenter';
 
 import {
   CalBodyContainer, WeekdayHeaderContainer, DatesFlex, DatesRow, WeekdaySlot,
-  DaySlot, DaySpan, DayName, WeatherContainer, ShowTemp
+  DaySlot, OffDaySlot, DaySpan, DayName, WeatherContainer, ShowTemp
 } from './styled';
 
 const CalendarBody = (props) => {
@@ -14,14 +14,14 @@ const CalendarBody = (props) => {
   let endBlanks = [];
   let ldpm = momenter.lastDayPrevMonth();
   for (let i = 0; i < momenter.firstDayOfMonth(); i++) {
-    startBlanks.push(<DaySlot key={"startBlank" + i} className="emptySlot">
+    startBlanks.push(<OffDaySlot key={"startBlank" + i} className="emptySlot">
       {ldpm - i}
-    </DaySlot>)
+    </OffDaySlot>)
   }
   for (let i = momenter.lastDayOfMonth(); i < 6; i++) {
-    endBlanks.push(<DaySlot key={"endBlank" + i} className="emptySlot">
+    endBlanks.push(<OffDaySlot key={"endBlank" + i} className="emptySlot">
       {6-i}
-    </DaySlot>)
+    </OffDaySlot>)
   }
 
   let daysInMonth = [];
@@ -85,7 +85,6 @@ const CalendarBody = (props) => {
       </DatesFlex>
     </CalBodyContainer>
   );
-
 }
 
 const WeekdayHeaderBase = (props) => {
