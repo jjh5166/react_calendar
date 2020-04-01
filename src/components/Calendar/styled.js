@@ -70,6 +70,18 @@ export const WeekdayHeaderContainer = styled(CalRow)`
   outline-offset: -1px;
   z-index: 2;
 `
+export const DayAbbr = styled.abbr`
+  border-bottom: none !important;
+  cursor: inherit !important;
+  text-decoration: none !important;
+  @media ${device.laptop} {
+    font-size: 0;
+      &:before {
+      font-size: 1rem;
+      content: attr(title);
+    }
+  }
+`
 export const DatesFlex = styled.div`
   display: flex;
   flex-direction: column;
