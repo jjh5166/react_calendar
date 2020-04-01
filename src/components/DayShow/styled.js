@@ -26,7 +26,7 @@ export const DayShowContainer = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #abacb0;
+    color: lightgray;
     font-size: 240px;
     z-index: -1;
     content: '${props => props.date}';

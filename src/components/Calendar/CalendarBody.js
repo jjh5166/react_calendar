@@ -5,22 +5,23 @@ import { withMomenter } from '../Momenter';
 
 import {
   CalBodyContainer, WeekdayHeaderContainer, DatesFlex, DatesRow, WeekdaySlot,
-  DaySlot, DaySpan, DayName, WeatherContainer, ShowTemp
+  DaySlot, OffDaySlot, DaySpan, DayName, WeatherContainer, ShowTemp
 } from './styled';
 
 const CalendarBody = (props) => {
   let { momenter, weather } = props
   let startBlanks = [];
   let endBlanks = [];
+  let ldpm = momenter.lastDayPrevMonth();
   for (let i = 0; i < momenter.firstDayOfMonth(); i++) {
-    startBlanks.push(<DaySlot key={"startBlank" + i} className="emptySlot">
-      {""}
-    </DaySlot>)
+    startBlanks.push(<OffDaySlot key={"startBlank" + i} className="emptySlot">
+      {ldpm - i}
+    </OffDaySlot>)
   }
   for (let i = momenter.lastDayOfMonth(); i < 6; i++) {
-    endBlanks.push(<DaySlot key={"endBlank" + i} className="emptySlot">
-      {""}
-    </DaySlot>)
+    endBlanks.push(<OffDaySlot key={"endBlank" + i} className="emptySlot">
+      {6-i}
+    </OffDaySlot>)
   }
 
   let daysInMonth = [];
@@ -29,7 +30,7 @@ const CalendarBody = (props) => {
   let currentDate = momenter.currentDate();
   let checkDate = momenter.dateContext.format('YYYY MM');
   let currentMonth = true ? (conserveDate === checkDate) : false
-  let weatherList = weather.list
+  let weatherList = currentMonth ? weather.list : null
 
   for (let d = 1; d <= momenter.daysInMonth(); d++) {
     let dIndex = d - todayDate
@@ -50,7 +51,7 @@ const CalendarBody = (props) => {
     )
   }
 
-  let totalSlots = [...startBlanks, ...daysInMonth, ...endBlanks]
+  let totalSlots = [...startBlanks.reverse(), ...daysInMonth, ...endBlanks.reverse()]
   let rows = [];
   let cells = [];
 
@@ -84,7 +85,6 @@ const CalendarBody = (props) => {
       </DatesFlex>
     </CalBodyContainer>
   );
-
 }
 
 const WeekdayHeaderBase = (props) => {

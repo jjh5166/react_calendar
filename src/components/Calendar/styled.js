@@ -95,6 +95,10 @@ export const DaySlot = styled(CalSlot)`
   background-color: ${props => props.selected ? "grey" : "white"};
   ${props => props.today && 'text-decoration: underline; font-weight: bold;'};
 `
+export const OffDaySlot = styled(DaySlot)`
+  color: grey;
+  background: lightgray;
+`
 export const DaySpan = styled.span`
   margin-left: 5%;
   font-family: 'Raleway', sans-serif;
