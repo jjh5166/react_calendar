@@ -5,7 +5,7 @@ import { withMomenter } from '../Momenter';
 
 import {
   CalBodyContainer, WeekdayHeaderContainer, DatesFlex, DatesRow, WeekdaySlot,
-  DaySlot, OffDaySlot, DaySpan, DayName, WeatherContainer, ShowTemp
+  DaySlot, OffDaySlot, DaySpan, DayName, WeatherContainer, ShowTemp, DayAbbr
 } from './styled';
 
 const CalendarBody = (props) => {
@@ -91,7 +91,7 @@ const WeekdayHeaderBase = (props) => {
   let weekdays = props.momenter.weekdays.map((dayName) => {
     return (
       <WeekdaySlot key={dayName}>
-        <DayName>{dayName}</DayName>
+        <DayName><DayAbbr title={dayName}>{`${dayName.slice(0, 3)}.`}</DayAbbr></DayName>
       </WeekdaySlot>
     )
   })
