@@ -123,20 +123,17 @@ export const DayName = styled.span`
 export const WeatherContainer = styled.div`
   position: absolute;
   bottom: 0;
-  width: 100%;
-  img{
-    display: block;
-    max-width: 70px;
-    max-height: 38px;
-    width: auto;
-    height: auto;
-    margin: 0 auto;
-  }
+  right: 0;
+  display: flex;
+  align-items: flex-end;
   @media ${device.laptop} {
     top: 0;
-    right: 0;
+    height: 32%;
     width: auto;
     bottom: unset;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 5px;
   }
 `
 export const ShowTemp = styled.div`

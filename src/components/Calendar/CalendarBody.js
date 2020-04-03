@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { withMomenter } from '../Momenter';
+import { weatherIconCodes } from '../../constants';
 
 import {
   CalBodyContainer, WeekdayHeaderContainer, DatesFlex, DatesRow, WeekdaySlot,
@@ -105,10 +106,10 @@ const WeekdayHeaderBase = (props) => {
 const WeekdayHeader = withMomenter(WeekdayHeaderBase);
 
 const WeatherReport = ({ daysWeather }) => {
-  let iconType = daysWeather['weather'][0]['icon']
+  let weatherId = daysWeather['weather'][0]['id']
   return (
     <WeatherContainer>
-      <img src={`http://openweathermap.org/img/w/${iconType}.png`} alt='Weather Icon' />
+      <i className={weatherIconCodes[weatherId]}></i>
       <ShowTemp>{Math.round(daysWeather.main.temp)}°</ShowTemp>
     </WeatherContainer>
   )
