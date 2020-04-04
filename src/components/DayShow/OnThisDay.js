@@ -20,7 +20,7 @@ const OnThisDay = (props) => {
     if (!onThisData[momenter.otdDate]){
       dispatch(getOnThisDay(momenter.otdDate)) 
     }
-  }, [momenter.otdDate])
+  });
   if (onThisData.hasOwnProperty(momenter.otdDate)){
     activated = true
     if (onThisData[momenter.otdDate].events.length !== 0) {
