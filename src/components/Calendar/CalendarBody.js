@@ -15,14 +15,20 @@ const CalendarBody = (props) => {
   let endBlanks = [];
   let ldpm = momenter.lastDayPrevMonth();
   for (let i = 0; i < momenter.firstDayOfMonth(); i++) {
-    startBlanks.push(<OffDaySlot key={"startBlank" + i} className="emptySlot">
-      {ldpm - i}
-    </OffDaySlot>)
+    let d = ldpm - i
+    startBlanks.push(
+      <OffDaySlot key={"startBlank" + i} onClick={(e) => { momenter.setDatePrevMonth(e, d) }}>
+        {d}
+      </OffDaySlot>
+    )
   }
   for (let i = momenter.lastDayOfMonth(); i < 6; i++) {
-    endBlanks.push(<OffDaySlot key={"endBlank" + i} className="emptySlot">
-      {6-i}
-    </OffDaySlot>)
+    let d = 6 - i
+    endBlanks.push(
+      <OffDaySlot key={"endBlank" + i} onClick={(e) => { momenter.setDateNextMonth(e, d) }}>
+        {d}
+      </OffDaySlot>
+    )
   }
 
   let daysInMonth = [];
@@ -80,7 +86,7 @@ const CalendarBody = (props) => {
   })
   return (
     <CalBodyContainer>
-      <WeekdayHeader/>
+      <WeekdayHeader />
       <DatesFlex>
         {calendarDates}
       </DatesFlex>
@@ -92,11 +98,15 @@ const WeekdayHeaderBase = (props) => {
   let weekdays = props.momenter.weekdays.map((dayName) => {
     return (
       <WeekdaySlot key={dayName}>
-        <DayName><DayAbbr title={dayName}>{`${dayName.slice(0, 3)}.`}</DayAbbr></DayName>
+        <DayName>
+          <DayAbbr title={dayName}>
+            {`${dayName.slice(0, 3)}.`}
+          </DayAbbr>
+        </DayName>
       </WeekdaySlot>
     )
   })
-  return(
+  return (
     <WeekdayHeaderContainer>
       {weekdays}
     </WeekdayHeaderContainer>
