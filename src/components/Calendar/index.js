@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 
 import Momenter, { MomenterContext } from '../Momenter';
-import { getOnThisDay } from '../../actions/onThisDay';
 import { gotCoords } from '../../actions/locale';
 
 import CalendarBody from './CalendarBody';
@@ -40,11 +39,8 @@ class Calendar extends React.Component {
   }
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(this.locSuccess, this.locFail);
-    this.props.dispatch(getOnThisDay(this.state.dateContext.format('M[/]D')));
   }
-  componentDidUpdate() {
-    this.props.dispatch(getOnThisDay(this.state.dateContext.format('M[/]D')));
-  }
+
   render() {
     return (
       <MomenterContext.Provider
@@ -60,7 +56,6 @@ class Calendar extends React.Component {
             <Locale />
             <DayShow />
           </DayContainer>
-          
         </CalendarContainer>
       </MomenterContext.Provider>
     );
