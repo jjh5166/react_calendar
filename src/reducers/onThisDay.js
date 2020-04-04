@@ -16,7 +16,7 @@ const randomIndexes = (max) => {
   return randos
 }
 const parseEvents = (events) => {
-  let indexi = randomIndexes(events.length)
+  let indexi = randomIndexes(events.length - 1)
   let selectedEvents = []
   indexi.forEach(ev => selectedEvents.push(events[ev]))
   return selectedEvents
