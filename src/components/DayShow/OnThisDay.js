@@ -1,8 +1,9 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
-
 import Loader from 'react-loader-spinner'
 import ReactHtmlParser from 'react-html-parser';
+
+import { getOnThisDay } from '../../actions/onThisDay';
 import { withMomenter } from '../Momenter';
 
 const choseEvent = (events) => {
@@ -12,16 +13,20 @@ const choseEvent = (events) => {
 }
 
 const OnThisDay = (props) => {
-  const { onThisData, momenter } = props;
+  const { onThisData, momenter, dispatch } = props;
   let activated = false
   let chosen = null;
-
+  useEffect(() => {
+    if (!onThisData[momenter.otdDate]){
+      dispatch(getOnThisDay(momenter.otdDate)) 
+    }
+  }, [momenter.otdDate])
   if (onThisData.hasOwnProperty(momenter.otdDate)){
     activated = true
     if (onThisData[momenter.otdDate].events.length !== 0) {
       chosen = choseEvent(onThisData[momenter.otdDate].events)
     }
-  }
+  } 
   
   return(
     <Fragment>
