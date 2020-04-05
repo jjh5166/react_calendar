@@ -32,6 +32,16 @@ class Momenter {
     dateContext = moment(dateContext).date(date);
     this.updateDateContext(dateContext);
   }
+  setDatePrevMonth = (e, date) => {
+    let dateContext = { ...this.dateContext };
+    dateContext = moment(dateContext).subtract(1, 'M').date(date);
+    this.updateDateContext(dateContext);
+  }
+  setDateNextMonth = (e, date) => {
+    let dateContext = { ...this.dateContext };
+    dateContext = moment(dateContext).add(1, 'M').date(date);
+    this.updateDateContext(dateContext);
+  }
   nextMonth = () => {
     let dateContext = {...this.dateContext}
     dateContext = moment(dateContext).add(1, 'M');
