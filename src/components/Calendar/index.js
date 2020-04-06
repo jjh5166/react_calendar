@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
+import { ThemeProvider } from 'styled-components';
 
 import Momenter, { MomenterContext } from '../Momenter';
 import { gotCoords } from '../../actions/locale';
@@ -42,24 +43,32 @@ class Calendar extends React.Component {
   }
 
   render() {
+    const { theme } = this.props
     return (
       <MomenterContext.Provider
         value={new Momenter(this.state.dateContext,
           this.updateDateContext)}
       >
-        <CalendarContainer>
-          <OptionalWrapper>
-            <CalendarHeader />
-            <CalendarBody />
-          </OptionalWrapper>
-          <DayContainer>
-            <Locale />
-            <DayShow />
-          </DayContainer>
-        </CalendarContainer>
+        <ThemeProvider theme={theme}>
+          <CalendarContainer>
+            <OptionalWrapper>
+              <CalendarHeader />
+              <CalendarBody />
+            </OptionalWrapper>
+            <DayContainer>
+              <Locale />
+              <DayShow />
+            </DayContainer>
+          </CalendarContainer>
+        </ThemeProvider>
       </MomenterContext.Provider>
     );
   }
 }
-
-export default connect()(Calendar);
+const mapStateToProps = (state) => {
+  const theme = state.theme;
+  return {
+    theme
+  };
+}
+export default connect(mapStateToProps)(Calendar);
