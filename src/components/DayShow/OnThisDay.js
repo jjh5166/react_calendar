@@ -1,10 +1,11 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner'
 import ReactHtmlParser from 'react-html-parser';
 
 import { getOnThisDay } from '../../actions/onThisDay';
 import { withMomenter } from '../Momenter';
+import { OtdContainer, OtdContent } from './styled';
 
 const choseEvent = (events) => {
   let rando = Math.floor(Math.random() * 5);
@@ -13,7 +14,7 @@ const choseEvent = (events) => {
 }
 
 const OnThisDay = (props) => {
-  const { onThisData, momenter, dispatch } = props;
+  const { onThisData, momenter, dispatch, theme } = props;
   let activated = false
   let chosen = null;
   useEffect(() => {
@@ -29,28 +30,32 @@ const OnThisDay = (props) => {
   } 
   
   return(
-    <Fragment>
+    <OtdContainer>
       {
-        (activated) && 
-        <div>
-          <Loader
-            type="Grid"
-            color="#00BFFF"
-            height={100}
-            width={100}
-            visible={onThisData[momenter.otdDate].isFetching}
-          />
-          {ReactHtmlParser(chosen)}
-        </div>
+        (activated) &&
+        <Fragment>
+            <Loader
+              type="Grid"
+              height={100}
+              width={100}
+              color={theme.fifthColor}
+              visible={onThisData[momenter.otdDate].isFetching}
+            />
+          <OtdContent>
+            <p>{ReactHtmlParser(chosen)}</p>
+          </OtdContent>
+        </Fragment>
       }
-    </Fragment>
+    </OtdContainer>
   )
 }
 
 const mapStateToProps = (state) => {
   let onThisData = state.onThisDay.data;
+  let theme = state.theme
   return {
-    onThisData
+    onThisData,
+    theme
   };
 }
 

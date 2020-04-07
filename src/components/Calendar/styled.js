@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { device } from '../../constants';
+import { lighten, shade } from 'polished';
 
 // CalendarHeader
 export const HeaderContainer = styled.div`
@@ -7,6 +8,7 @@ export const HeaderContainer = styled.div`
   justify-content: space-between;
   font-size: 3.6em;
   height: 60px;
+  -webkit-text-stroke: 1px black;
   @media ${device.landscapeMobile} {
     height: unset;
   }
@@ -44,12 +46,13 @@ export const FlexSpacer = styled.div`
 `
 // CalendarBody
 export const CalBodyContainer = styled.div`
-  background-color: black;
+  background-color: ${props => props.theme.secondColor};
   padding: 1px;
   height: 40vh;
   max-width: 100%;
   display: grid;
   grid-template-rows: 24px 1fr;
+  grid-gap: 1px;
   @media ${device.landscapeMobile} {
     height: unset;
   }
@@ -62,11 +65,11 @@ export const CalBodyContainer = styled.div`
 export const CalRow = styled.div`
   display: grid;
   grid-template-columns: repeat(7,1fr);
+  grid-gap: 1px;
 `
 export const WeekdayHeaderContainer = styled(CalRow)`
   position: relative;
   height: 24px;
-  outline: solid green 2px;
   outline-offset: -1px;
   z-index: 2;
 `
@@ -88,7 +91,6 @@ export const DatesFlex = styled.div`
 `
 export const DatesRow = styled(CalRow)`
   margin-bottom: 1px;
-  grid-gap: 1px;
   flex: 1;
   height: 2px;
 `
@@ -97,19 +99,25 @@ export const CalSlot = styled.div`
   width: 100%;
   background-color: white;
   background-clip: border-box;
+  background: ${props => shade(.5, props.theme.secondColor)};
 `
 export const WeekdaySlot = styled(CalSlot)`
   text-align: center;
+  -webkit-text-stroke: .15px black;
 `
 export const DaySlot = styled(CalSlot)`
   position: relative;
   cursor: pointer;
-  background-color: ${props => props.selected ? "grey" : "white"};
+  background: ${props => props.selected ? lighten(0.3, props.theme.mainColor) : props.theme.mainColor};
+  color: ${props => props.theme.thirdColor};
   ${props => props.today && 'text-decoration: underline; font-weight: bold;'};
+  &:hover{
+    background-color: ${props => lighten(0.2, props.theme.mainColor)};
+  }
 `
 export const OffDaySlot = styled(DaySlot)`
-  color: grey;
-  background: lightgray;
+  color: ${props => shade(.25, props.theme.thirdColor)};
+  background: ${props => shade(0.25, props.theme.mainColor)};;
 `
 export const DaySpan = styled.span`
   margin-left: 5%;
@@ -126,6 +134,7 @@ export const WeatherContainer = styled.div`
   right: 0;
   display: flex;
   align-items: flex-end;
+  color: ${props => props.theme.fourthColor};
   @media ${device.laptop} {
     top: 0;
     height: 32%;
@@ -160,11 +169,27 @@ export const CalendarContainer = styled.div`
   max-width: 100%;
   display: flex;
   flex-direction: column;
+  background-color: ${props => shade(0.75, props.theme.mainColor)};
+  color: ${props => props.theme.fourthColor};
   @media ${device.landscapeMobile} {
     flex-wrap: wrap;
     flex-direction: row;
   }
   @media ${device.laptop} {
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+    text-decoration: underline;
+  }
+  a:hover {
+    color: ${props => lighten(.75, props.theme.fourthColor)};
+  }
+  a:active {
+    color: ${props => lighten(.5, props.theme.fourthColor)};
+  }
+  a:visited {
+    color: ${props => shade(.5, props.theme.fourthColor)};
   }
 `
 export const OptionalWrapper = styled.div`
