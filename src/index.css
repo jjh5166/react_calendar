@@ -8,6 +8,7 @@ body,
 }
 #root {
 	font-family: 'Yanone Kaffeesatz', sans-serif;
+	-webkit-text-stroke: .5px;
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/ 

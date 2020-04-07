@@ -18,7 +18,7 @@ const CalendarBody = (props) => {
     let d = ldpm - i
     startBlanks.push(
       <OffDaySlot key={"startBlank" + i} onClick={(e) => { momenter.setDatePrevMonth(e, d) }}>
-        {d}
+        <DaySpan>{d}</DaySpan>
       </OffDaySlot>
     )
   }
@@ -26,7 +26,7 @@ const CalendarBody = (props) => {
     let d = 6 - i
     endBlanks.push(
       <OffDaySlot key={"endBlank" + i} onClick={(e) => { momenter.setDateNextMonth(e, d) }}>
-        {d}
+        <DaySpan>{d}</DaySpan>
       </OffDaySlot>
     )
   }
