@@ -70,7 +70,6 @@ export const WeekdayHeaderContainer = styled(CalRow)`
   position: relative;
   height: 24px;
   outline-offset: -1px;
-  z-index: 2;
 `
 export const DayAbbr = styled.abbr`
   border-bottom: none !important;
@@ -159,6 +158,9 @@ export const MonthArrow = styled.div`
   display: flex;
   align-items: center;
   ${props => (props.state === 'left' ? `margin-left: 1%` : `margin-right: 1%`)};
+  &:hover{
+      color: ${props => lighten(.2, props.theme.fourthColor)};
+  }
 `
 // Calendar 
 export const CalendarContainer = styled.div`
