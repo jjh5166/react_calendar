@@ -1,15 +1,23 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import { SettingsTag, CogContainer } from './styled'
 
-const Settings = () => {
+import { ReactComponent as Cog } from '../../cog.svg';
+const Settings = (props) => {
+  const { theme } = props;
   return (
     <SettingsTag>
       <CogContainer>
-        <i className="fas fa-cog"></i>
+        <Cog fill={theme.mainColor}/>
       </CogContainer>
     </SettingsTag>
   )
 }
-
-export default Settings;
+const mapStateToProps = (state) => {
+  let theme = state.theme
+  return {
+    theme
+  };
+}
+export default connect(mapStateToProps)(Settings);
