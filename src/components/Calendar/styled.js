@@ -6,7 +6,6 @@ import { lighten, shade } from 'polished';
 export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  font-size: 3.6em;
   height: 60px;
   -webkit-text-stroke: 1px black;
   @media ${device.landscapeMobile} {
@@ -15,7 +14,7 @@ export const HeaderContainer = styled.div`
   @media ${device.laptop} {
     width: 90%;
     margin: 0 auto;
-    margin-top: 10px;
+    margin-top: 5px;
   }
 `
 export const MonthYearContainer = styled.div`
@@ -29,10 +28,10 @@ export const FlexCenter = styled.div`
   width:90%;
   display: inline-flex;
   justify-content: space-between;
-  font-size: 56px;
+  font-size: 43px;
   @media ${device.landscapeMobile} {
     justify-content: space-around;
-    font-size: 45px;
+    font-size: 33px;
   }
   @media ${device.laptop} {
     justify-content: center;
@@ -217,9 +216,16 @@ export const DayContainer = styled.div`
   flex: 1;
   @media ${device.landscapeMobile} {
     width: 50%;
-    justify-content: space-around;
   }
   @media ${device.laptop} {
     width: 40%;
+  }
+`
+export const LocaleSettingsWrapper = styled.div`
+  width: 100%;
+  order: 2;
+  @media ${device.landscapeMobile} {
+    height: 13%;
+    order: 1;
   }
 `

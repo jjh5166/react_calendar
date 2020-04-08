@@ -9,8 +9,9 @@ import { gotCoords } from '../../actions/locale';
 import CalendarBody from './CalendarBody';
 import CalendarHeader from './CalendarHeader';
 import DayShow from '../DayShow';
-import Locale from '../Locale'
-import { CalendarContainer, OptionalWrapper, DayContainer } from './styled';
+import Locale from '../Locale';
+import Settings from '../Settings';
+import { CalendarContainer, OptionalWrapper, DayContainer, LocaleSettingsWrapper } from './styled';
 
 const DEFAULT_COORDS = {
   lat: 51.5073,
@@ -56,7 +57,10 @@ class Calendar extends React.Component {
               <CalendarBody />
             </OptionalWrapper>
             <DayContainer>
-              <Locale />
+              <LocaleSettingsWrapper>
+                <Settings />
+                <Locale />
+              </LocaleSettingsWrapper>
               <DayShow />
             </DayContainer>
           </CalendarContainer>
