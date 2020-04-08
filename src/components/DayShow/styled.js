@@ -17,13 +17,14 @@ export const DayShowContainer = styled.div`
   width: 90%;
   @media ${device.landscapeMobile} {
     order: 2;
-    height: 90%;
+    height: 80%;
     flex: none;
     margin: 0;
+    margin-bottom: 12px;
   }
   @media ${device.laptop} {
-    height: 80%;
     width: 80%;
+    margin-bottom: 45px;
   }
   &:before {
     font-family: 'Fjalla One', sans-serif;

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 
+import { ClockContainer } from './styled'
+
 class Clock extends Component {
   constructor(props) {
     super(props);
@@ -25,7 +27,7 @@ class Clock extends Component {
 
   render() {
     return (
-      <div>{this.state.time}</div>
+      <ClockContainer>{this.state.time}</ClockContainer>
     )
   }
 }
