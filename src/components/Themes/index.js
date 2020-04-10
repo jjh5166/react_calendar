@@ -6,10 +6,18 @@ export const cheerUpTheme = {
   fifthColor: '#C44D58'
 };
 
-export const oceanFiveTheme ={
+export const oceanFiveTheme = {
   mainColor: '#00A0B0',
   secondColor: '#6A4A3C',
   thirdColor: '#CC333F',
   fourthColor: '#EB6841',
   fifthColor: '#EDC951'
+}
+
+export const headacheTheme = {
+  mainColor: '#655643',
+  secondColor: '#80BCA3',
+  thirdColor: '#F6F7BD',
+  fourthColor: '#E6AC27',
+  fifthColor: '#BF4D28'
 }

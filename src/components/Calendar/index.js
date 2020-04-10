@@ -40,7 +40,7 @@ class Calendar extends React.Component {
     this.setState({ dateContext })
   }
   componentDidMount() {
-    navigator.geolocation.getCurrentPosition(this.locSuccess, this.locFail);
+    navigator.geolocation.getCurrentPosition(this.locSuccess, this.locFail, { timeout: 10000 });
   }
 
   render() {
