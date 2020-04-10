@@ -2,6 +2,14 @@ import styled from 'styled-components';
 import { device } from '../../constants';
 import { lighten } from 'polished';
 
+const SettingsVars = {
+  height: {
+    CLOSED: '40px',
+    OPEN: '100px',
+  },
+  borderWidth: '2px',
+  
+}
 export const CogContainer = styled.div`
   position: absolute;
   bottom: 0;
@@ -28,23 +36,94 @@ export const SettingsTag = styled.div`
   float: right;
   bottom: 0;
   right:0;
-  height: 40px;
-  width: 40px;
+  height: ${props => props.enlarged ? SettingsVars.height.OPEN : SettingsVars.height.CLOSED};
+  width: ${props => props.enlarged ? SettingsVars.height.OPEN : SettingsVars.height.CLOSED};
   transition: all .5s;
   clip-path: polygon(100% 0, 100% 100%, 0 100%);
   background: ${props => props.theme.fourthColor};
+  z-index: 3;
   &:hover{
-    height: 100px;
-    width: 100px;
+    height: ${SettingsVars.height.OPEN};
+    width: ${SettingsVars.height.OPEN};
+  }
+  ${CogContainer} {
+    padding: ${props => props.enlarged ? '5px' : 'unset'};
   }
   &:hover ${CogContainer} {
     padding: 5px;
   }
   @media ${device.landscapeMobile} {
     top: 0;
+    bottom: unset;
     clip-path: polygon(100% 0, 0 0, 100% 100%);
   }
   @media ${device.laptop} {
     
   }
+`
+export const SettingsContainer = styled.div`
+  z-index: 2;
+`
+export const SettingsDropdownContainer = styled.div`
+  width: ${props => props.expanded ? `calc(100% - 2 * ${SettingsVars.borderWidth})` : '0'};
+  height: ${props => props.expanded ? `calc(${SettingsVars.height.OPEN} - 2 * ${SettingsVars.borderWidth})` : '0'};
+  transition: all .5s ease-out;
+  position: absolute;
+  background: ${props => props.theme.mainColor};
+  border: ${SettingsVars.borderWidth} solid ${props => props.theme.secondColor};
+  overflow: hidden;
+  right:0;
+  bottom:0;
+  z-index: 2;
+  @media ${device.landscapeMobile} {
+    width: ${props => props.expanded ? '100%' : '0'};
+    top: 0;
+    bottom: unset;
+  }
+  ul{
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    height: 100%;
+  }
+  li{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  li:hover,
+  li:focus-within {
+    background: ${props => lighten(0.2, props.theme.mainColor)};
+    cursor: pointer;
+  }
+  ul li ul {
+    visibility: hidden;
+    opacity: 0;
+    min-width: 5rem;
+    position: absolute;
+    transition: all 0.5s ease;
+    margin-top: 1rem;
+    left: 0;
+    display: none;
+  }
+  ul li:hover > ul,
+ul li:focus-within > ul,
+ul li ul:hover,
+ul li ul:focus {
+  visibility: visible;
+  opacity: 1;
+  display: block
+}
+ul li ul li {
+    clear: both;
+  width: 100%;
+}
+`
+
+export const DDListItem = styled.li`
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `
