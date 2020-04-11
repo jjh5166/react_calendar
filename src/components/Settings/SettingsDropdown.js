@@ -41,7 +41,7 @@ const DropDownList = ({ options, filter, clickHandler }) => {
 const DropdownOption = ({ title, selected, children, clickHandler }) => {
   return (
     <DDListItem title={title} selected={selected} onClick={(e) => clickHandler(title)}>
-      <a href='!#'>{title}</a>
+      <span>{title}</span>
       {children}
     </DDListItem>
   )
