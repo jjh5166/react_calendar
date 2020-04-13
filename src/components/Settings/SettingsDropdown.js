@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-import { SettingsDropdownContainer, DDListItem } from './styled';
+import { SettingsDropdownContainer, DropDownUList, DDListItem, DDEnum } from './styled';
+import { ThemeList } from '../Themes';
 
 const dropDownOptions = ['Themes', 'Location', 'Events']
 
@@ -20,22 +21,40 @@ const SettingsDropdown = ({ expanded }) => {
   return (
     <SettingsDropdownContainer expanded={expanded} >
       <DropDownList options={dropDownOptions} filter={selectedItem} clickHandler={handleClick} />
+      {selectedItem && <DropdownEnum status={selectedItem} />}
     </SettingsDropdownContainer>
   )
 }
-
+const DropdownEnum = ({status}) => {
+  
+  return(
+    <DDEnum>
+      {(() => {
+        switch (status) {
+          case 'Themes':
+            return <ThemeList />;
+          case 'Location':
+            return <div>{'Location'}</div>;
+          case 'Events':
+            return <div>{'Events'}</div>;
+          default:
+            return null;
+        }
+      })()}
+    </DDEnum>
+)}
 const DropDownList = ({ options, filter, clickHandler }) => {
   let filtered = filter ? options.filter(sel => sel === filter) : options;
 
   return (
-    <ul>
+    <DropDownUList>
       {
         filtered.map(title => (
           <DropdownOption key={title} title={title} clickHandler={clickHandler}>
           </DropdownOption>
         ))
       }
-    </ul>
+    </DropDownUList>
   )
 }
 const DropdownOption = ({ title, selected, children, clickHandler }) => {
