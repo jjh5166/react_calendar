@@ -67,6 +67,8 @@ export const SettingsContainer = styled.div`
 export const SettingsDropdownContainer = styled.div`
   width: ${props => props.expanded ? `calc(100% - 2 * ${SettingsVars.borderWidth})` : '0'};
   height: ${props => props.expanded ? `calc(${SettingsVars.height.OPEN} - 2 * ${SettingsVars.borderWidth})` : '0'};
+  display: flex;
+  flex-direction: column;
   transition: all .5s ease-out;
   position: absolute;
   background: ${props => props.theme.mainColor};
@@ -97,33 +99,16 @@ export const SettingsDropdownContainer = styled.div`
     background: ${props => lighten(0.2, props.theme.mainColor)};
     cursor: pointer;
   }
-  ul li ul {
-    visibility: hidden;
-    opacity: 0;
-    min-width: 5rem;
-    position: absolute;
-    transition: all 0.5s ease;
-    margin-top: 1rem;
-    left: 0;
-    display: none;
-  }
-  ul li:hover > ul,
-ul li:focus-within > ul,
-ul li ul:hover,
-ul li ul:focus {
-  visibility: visible;
-  opacity: 1;
-  display: block
-}
-ul li ul li {
-    clear: both;
-  width: 100%;
-}
 `
-
+export const DropDownUList = styled.ul`
+  flex: 1;
+`
 export const DDListItem = styled.li`
   flex: 1;
   display: flex;
   flex-direction: row;
   align-items: center;
+`
+export const DDEnum = styled.div`
+  flex:2;
 `
