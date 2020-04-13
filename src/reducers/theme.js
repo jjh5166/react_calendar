@@ -1,15 +1,17 @@
 import { CHANGE_THEME } from '../actions/theme';
-import { cheerUpTheme } from '../components/Themes';
+import { themes } from '../constants';
 
 const initialState = {
-  ...cheerUpTheme
+  ...themes.$CheerUp
 }
-
+const setTheme = theme => {
+  return { ...themes[theme]}
+}
 export default (state = initialState, action) => {
   switch (action.type) {
     case CHANGE_THEME:
       return {
-        ...state,
+        ...setTheme(action.theme),
       }
     default:
       return state;
