@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { withMomenter } from '../Momenter';
-import OnThisDay from './OnThisDay'
+import OnThisDay from '../OnThisDay';
 import { DayShowContainer } from './styled';
 
 function DayShow(props) {
