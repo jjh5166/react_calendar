@@ -9,11 +9,11 @@ export const themes = {
   },
   $OceanFive: {
     name: 'Ocean Five',
-    mainColor: '#00A0B0',
-    secondColor: '#6A4A3C',
-    thirdColor: '#CC333F',
+    mainColor: '#6A4A3C',
+    secondColor: '#00A0B0',
+    thirdColor: '#EDC951',
     fourthColor: '#EB6841',
-    fifthColor: '#EDC951'
+    fifthColor: '#CC333F'
   },
   $Headache: {
     name: 'Headache',
