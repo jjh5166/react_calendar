@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { device } from '../../constants';
-import { shade, transparentize } from 'polished';
+import { shade } from 'polished';
 
 export const DayShowContainer = styled.div`
   position: relative;
@@ -47,22 +47,6 @@ export const DayShowContainer = styled.div`
     }
   }
 `
-export const EventItem = styled.div`
-  width: 80%;
-  border-bottom: solid black 1px;
-  min-height: 35px;
-`
-export const OtdContainer = styled.div`
-  z-index: 1;
-`
-export const OtdContent = styled.div`
-  border-radius: 30px;
-  background: ${props => transparentize(0.5, props.theme.mainColor)};
-  border: solid ${props => props.theme.fifthColor} 2px;
-  margin: 0 6px;
-  p{
-    margin: 14px;
-  }
-`
+
 export const OtdLoader = styled.div`
 `

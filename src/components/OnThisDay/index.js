@@ -1,6 +1,6 @@
 import React, { useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
-import Loader from 'react-loader-spinner'
+import Loader from 'react-loader-spinner';
 import ReactHtmlParser from 'react-html-parser';
 
 import { getOnThisDay } from '../../actions/onThisDay';
@@ -18,29 +18,29 @@ const OnThisDay = (props) => {
   let activated = false
   let chosen = null;
   useEffect(() => {
-    if (!onThisData[momenter.otdDate]){
-      dispatch(getOnThisDay(momenter.otdDate)) 
+    if (!onThisData[momenter.otdDate]) {
+      dispatch(getOnThisDay(momenter.otdDate))
     }
   });
-  if (onThisData.hasOwnProperty(momenter.otdDate)){
+  if (onThisData.hasOwnProperty(momenter.otdDate)) {
     activated = true
     if (onThisData[momenter.otdDate].events.length !== 0) {
       chosen = choseEvent(onThisData[momenter.otdDate].events)
     }
-  } 
-  
-  return(
+  }
+
+  return (
     <OtdContainer>
       {
         (activated) &&
         <Fragment>
-            <Loader
-              type="Grid"
-              height={100}
-              width={100}
-              color={theme.fifthColor}
-              visible={onThisData[momenter.otdDate].isFetching}
-            />
+          <Loader
+            type="Grid"
+            height={100}
+            width={100}
+            color={theme.fifthColor}
+            visible={onThisData[momenter.otdDate].isFetching}
+          />
           <OtdContent>
             <p>{ReactHtmlParser(chosen)}</p>
           </OtdContent>
