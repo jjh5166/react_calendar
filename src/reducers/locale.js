@@ -11,7 +11,7 @@ const setCity = response =>{
   if(address.country_code === "us"){
     city = `${address.city}, ${address.state}`
   }else{
-    city = `${address.city}, ${address.country}`
+    city = `${address.city || address.village || address.state}, ${address.country}`
   }
   return city
 }
