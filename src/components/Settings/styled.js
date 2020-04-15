@@ -66,13 +66,16 @@ export const SettingsContainer = styled.div`
 `
 export const SettingsDropdownContainer = styled.div`
   width: ${props => props.expanded ? `calc(100% - 2 * ${SettingsVars.borderWidth})` : '0'};
-  height: ${props => props.expanded ? `calc(${SettingsVars.height.OPEN} - 2 * ${SettingsVars.borderWidth})` : '0'};
+  min-height: ${props => props.expanded ? `calc(${SettingsVars.height.OPEN} - 2 * ${SettingsVars.borderWidth})` : '0'};
+  height: ${props => props.subOpen == 'Location' ? '200px' : 'unset'};
   display: flex;
   flex-direction: column;
   transition: all .5s ease-out;
   position: absolute;
   background: ${props => props.theme.mainColor};
-  border: ${SettingsVars.borderWidth} solid ${props => props.theme.secondColor};
+  ${props => props.expanded &&
+  `border: ${SettingsVars.borderWidth} solid ${props.theme.secondColor}`
+  }
   overflow: hidden;
   right:0;
   bottom:0;
@@ -86,7 +89,7 @@ export const SettingsDropdownContainer = styled.div`
     display: flex;
     flex-direction: column;
     padding: 0;
-    height: 100%;
+    width: 100%;
   }
   li{
     flex: 1;
@@ -110,5 +113,6 @@ export const DDListItem = styled.li`
   align-items: center;
 `
 export const DDEnum = styled.div`
-  flex:2;
+  display: flex;
+  flex: 4;
 `
