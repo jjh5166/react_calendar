@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { SettingsDropdownContainer, DropDownUList, DDListItem, DDEnum } from './styled';
 import { ThemeList } from '../Themes';
+import { GeoAutocomplete } from '../Locale'
 
 const dropDownOptions = ['Themes', 'Location', 'Events']
 
@@ -9,7 +10,7 @@ const SettingsDropdown = ({ expanded }) => {
   const [selectedItem, setSelected] = useState(null);
 
   const handleClick = selectedValue => {
-    setSelected(selectedValue);
+    setSelected(selectedValue === selectedItem ? null : selectedValue);
   };
 
   useEffect(() => {
@@ -19,7 +20,7 @@ const SettingsDropdown = ({ expanded }) => {
   }, [expanded]);
 
   return (
-    <SettingsDropdownContainer expanded={expanded} >
+    <SettingsDropdownContainer expanded={expanded} subOpen={selectedItem}>
       <DropDownList options={dropDownOptions} filter={selectedItem} clickHandler={handleClick} />
       {selectedItem && <DropdownEnum status={selectedItem} />}
     </SettingsDropdownContainer>
@@ -34,9 +35,9 @@ const DropdownEnum = ({status}) => {
           case 'Themes':
             return <ThemeList />;
           case 'Location':
-            return <div>{'Location'}</div>;
+            return <GeoAutocomplete />;
           case 'Events':
-            return <div>{'Events'}</div>;
+            return <div>{'Coming Soon!'}</div>;
           default:
             return null;
         }

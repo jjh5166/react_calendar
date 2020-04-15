@@ -15,6 +15,7 @@ export const DayShowContainer = styled.div`
   border-radius: 30px;
   margin: 7px 0;
   width: 90%;
+  overflow: hidden;
   @media ${device.landscapeMobile} {
     order: 2;
     height: 80%;

@@ -3,11 +3,17 @@ import { connect } from 'react-redux';
 
 import { SettingsContainer, SettingsTag, CogContainer } from './styled';
 import { ReactComponent as Cog } from '../../cog.svg';
-import SettingsDropdown from './SettingsDropdown'
+import SettingsDropdown from './SettingsDropdown';
+
+export const SettingsContext = React.createContext({
+  open: false,
+  setOpen: () => { }
+})
 
 const Settings = (props) => {
   const node = useRef();
   const [open, setOpen] = useState(false);
+  const value = { setOpen };
   const { theme } = props;
 
   const handleClickOutside = e => {
@@ -29,14 +35,16 @@ const Settings = (props) => {
     };
   }, [open]);
   return (
-    <SettingsContainer ref={node}>
-      <SettingsTag enlarged={open}>
-        <CogContainer onClick={e => setOpen(!open)}>
-          <Cog fill={theme.mainColor}/>
-        </CogContainer>
-      </SettingsTag>
-      <SettingsDropdown expanded={open}/>
-    </SettingsContainer>
+    <SettingsContext.Provider value={value} >
+      <SettingsContainer ref={node}>
+        <SettingsTag enlarged={open}>
+          <CogContainer onClick={e => setOpen(!open)}>
+            <Cog fill={theme.mainColor} />
+          </CogContainer>
+        </SettingsTag>
+        <SettingsDropdown expanded={open} />
+      </SettingsContainer>
+    </SettingsContext.Provider>
   )
 }
 
