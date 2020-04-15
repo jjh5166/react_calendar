@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import Clock from '../Clock';
 import { LocaleContainer } from './styled';
+import GeoAutocomplete from './GeoAutocomplete'
 
 const Locale = (props) => {
 
@@ -21,4 +22,5 @@ const mapStateToProps = (state) => {
   };
 }
 
+export { GeoAutocomplete };
 export default connect(mapStateToProps)(Locale);
