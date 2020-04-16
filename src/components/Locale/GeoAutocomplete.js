@@ -5,6 +5,7 @@ import { debounce } from 'underscore';
 
 import { gotCoords } from '../../actions/locale';
 import { SettingsContext } from '../Settings';
+import { GeoAutoContainer, GeoInput, SuggestionUL } from './styled';
 
 const GeoAutocomplete = (props) => {
   const [userInput, setUserInput] = useState('');
@@ -36,14 +37,14 @@ const GeoAutocomplete = (props) => {
     dbAutocompleteQuery(userInput)
   }
   return (
-    <div>
-      <input
+    <GeoAutoContainer>
+      <GeoInput
         type="text"
         onChange={e => handleChange(e)}
         value={userInput}
       />
       {(suggestions.length > 1) && <SuggestionList suggestions={suggestions} />}
-    </div>
+    </GeoAutoContainer>
   )
 }
 const SuggestionListBase = ({ dispatch, suggestions }) => {
@@ -53,11 +54,13 @@ const SuggestionListBase = ({ dispatch, suggestions }) => {
     setOpen(false);
   }
   return (
-    <ul>
+    <SuggestionUL>
       {suggestions.map(s => (
-        <li key={s.name} onClick={(e) => handleClick(e, s.coords)}>{s.name}</li>
+        <li key={s.name} onClick={(e) => handleClick(e, s.coords)}>
+          <span>{s.name}</span>
+        </li>
       ))}
-    </ul>
+    </SuggestionUL>
   )
 }
 const SuggestionList = connect()(SuggestionListBase);

@@ -6,9 +6,9 @@ const SettingsVars = {
   height: {
     CLOSED: '40px',
     OPEN: '100px',
+    EXTENDED: '200px'
   },
   borderWidth: '2px',
-  
 }
 export const CogContainer = styled.div`
   position: absolute;
@@ -64,17 +64,26 @@ export const SettingsTag = styled.div`
 export const SettingsContainer = styled.div`
   z-index: 2;
 `
+export const DDListItem = styled.li`
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`
 export const SettingsDropdownContainer = styled.div`
   width: ${props => props.expanded ? `calc(100% - 2 * ${SettingsVars.borderWidth})` : '0'};
   min-height: ${props => props.expanded ? `calc(${SettingsVars.height.OPEN} - 2 * ${SettingsVars.borderWidth})` : '0'};
-  height: ${props => props.subOpen == 'Location' ? '200px' : 'unset'};
+  height: ${props => props.subOpen === 'Location' ? `${SettingsVars.height.EXTENDED}` : 'unset'};
   display: flex;
   flex-direction: column;
   transition: all .5s ease-out;
   position: absolute;
   background: ${props => props.theme.mainColor};
+  ${DDListItem}{
+    height: ${props => props.subOpen === 'Location' && '35px'};
+  };
   ${props => props.expanded &&
-  `border: ${SettingsVars.borderWidth} solid ${props.theme.secondColor}`
+    `border: ${SettingsVars.borderWidth} solid ${props.theme.secondColor}`
   }
   overflow: hidden;
   right:0;
@@ -86,16 +95,19 @@ export const SettingsDropdownContainer = styled.div`
     bottom: unset;
   }
   ul{
-    display: flex;
-    flex-direction: column;
     padding: 0;
     width: 100%;
+    display: flex;
+    flex-direction: column;
   }
   li{
     flex: 1;
     display: flex;
     flex-direction: row;
     align-items: center;
+    span{
+      margin-left: 5px;
+    }
   }
   li:hover,
   li:focus-within {
@@ -106,12 +118,7 @@ export const SettingsDropdownContainer = styled.div`
 export const DropDownUList = styled.ul`
   flex: 1;
 `
-export const DDListItem = styled.li`
-  flex: 1;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`
+
 export const DDEnum = styled.div`
   display: flex;
   flex: 4;

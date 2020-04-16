@@ -48,6 +48,3 @@ export const DayShowContainer = styled.div`
     }
   }
 `
-
-export const OtdLoader = styled.div`
-`
