@@ -25,6 +25,9 @@ export const CogContainer = styled.div`
     top: 0;
     padding: 1px 1px 0 0;
   }
+  svg{
+    max-height: 100%;
+  }
   svg:hover, svg:active, svg:focus{
     cursor: pointer;
     fill: ${ props => lighten(0.2, props.theme.mainColor)}
