@@ -1,27 +1,19 @@
-import React from 'react';
+import React from 'react'
 
-import { withMomenter } from '../Momenter';
-import { MonthArrow } from './styled';
+import { withMomenter } from '../Momenter'
+import { MonthArrow } from './styled'
 
-function CalendarArrow(props) {
-  switch (props.state) {
-    case 'left':
-      return (
-        <MonthArrow state={props.state} >
-          <i className="fa fa-chevron-left" aria-hidden="true"
-            onClick={(e) => { props.momenter.prevMonth() }}></i>
-        </MonthArrow >
-      )
-    case 'right':
-      return (
-        <MonthArrow state={props.state} >
-          <i className="fa fa-chevron-right" aria-hidden="true"
-            onClick={(e) => props.momenter.nextMonth()}></i>
-        </MonthArrow>
-      )
-    default:
-      return null
-  }
+const CalendarArrow = (props) => {
+  const { direction, momenter } = props
+  return (
+    <MonthArrow
+      direction={direction}
+      onClick={(e) => {
+        direction === 'left' ? momenter.prevMonth() : momenter.nextMonth()
+      }}
+    >
+      <i className={`fa fa-chevron-${direction}`} aria-hidden='true'></i>
+    </MonthArrow>
+  )
 }
-
-export default withMomenter(CalendarArrow);
+export default withMomenter(CalendarArrow)
