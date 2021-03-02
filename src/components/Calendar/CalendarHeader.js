@@ -1,18 +1,20 @@
-import React from 'react';
+import React from 'react'
 
 import MonthNav from '../MonthNav'
 import CalendarArrow from './CalendarArrow'
-import YearNav from '../YearNav';
+import YearNav from '../YearNav'
 
 import {
-  HeaderContainer, MonthYearContainer, FlexCenter,
-  FlexSpacer
-} from './styled';
+  HeaderContainer,
+  MonthYearContainer,
+  FlexCenter,
+  FlexSpacer,
+} from './styled'
 
 function CalendarHeader() {
   return (
     <HeaderContainer>
-      <CalendarArrow state="left" />
+      <CalendarArrow direction='left' />
       <MonthYearContainer>
         <FlexCenter>
           <MonthNav />
@@ -20,9 +22,9 @@ function CalendarHeader() {
           <YearNav />
         </FlexCenter>
       </MonthYearContainer>
-      <CalendarArrow state="right" />
+      <CalendarArrow direction='right' />
     </HeaderContainer>
   )
 }
 
-export default CalendarHeader;
+export default CalendarHeader
