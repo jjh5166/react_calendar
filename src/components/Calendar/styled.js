@@ -157,11 +157,12 @@ export const MonthArrow = styled.div`
   cursor: pointer;
   display: flex;
   align-items: center;
-  ${props => (props.state === 'left' ? `margin-left: 1%` : `margin-right: 1%`)};
-  &:hover{
-      color: ${props => lighten(.2, props.theme.fourthColor)};
+  ${({ direction }) =>
+    direction === "left" ? `margin-left: 1%` : `margin-right: 1%`};
+  &:hover {
+    color: ${(props) => lighten(0.2, props.theme.fourthColor)};
   }
-`
+`;
 // Calendar 
 export const CalendarContainer = styled.div`
   overflow: hidden;
