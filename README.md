@@ -67,14 +67,14 @@ Follow these instructions to get a dev environment up and running.
    ```sh
    yarn
    ```
-4. Get free API keys for:
+3. Get free API keys for:
   - [OpenWeather](https://openweathermap.org/)
   - [LocationIQ](https://locationiq.com/)
-5. Set environment variables in file named .env at root
+4. Set environment variables in file named .env at root
   - REACT_APP_LOCATION_KEY - LocationIQ  API key
   - REACT_APP_WEATHER_API_KEY - OpenWeather API key
   - REACT_APP_CORS_PROXY - Address to a CORS proxy server [You can fork this repo and deploy your own](https://github.com/Rob--W/cors-anywhere/)
-6. Start development environment
+5. Start development environment
   ```sh
   $ yarn start
   ```
