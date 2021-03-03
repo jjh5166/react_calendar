@@ -75,9 +75,9 @@ Follow these instructions to get a dev environment up and running.
   - REACT_APP_WEATHER_API_KEY - OpenWeather API key
   - REACT_APP_CORS_PROXY - Address to a CORS proxy server [You can fork this repo and deploy your own](https://github.com/Rob--W/cors-anywhere/)
 5. Start development environment
-  ```sh
-  $ yarn start
-  ```
+    ```sh
+    $ yarn start
+    ```
 
 ## Contact
 
